@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ARCA | Meus Animais</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="../../assets/css/variables.css" rel="stylesheet">
+    <link href="../../assets/css/arca-app.css" rel="stylesheet">
+</head>
+<body class="app-page" data-page="meus-animais">
+    <nav class="navbar navbar-expand-lg arca-nav sticky-top">
+        <div class="container-fluid px-3 px-lg-5">
+            <a class="arca-brand" href="../../index.html" aria-label="Programa Arca">
+                <img class="arca-logo-img" src="../../assets/img/arca-logo.png" alt="Programa Arca">
+            </a>
+            <span class="arca-brand-label d-none d-sm-inline">Meus animais</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#petsNav" aria-controls="petsNav" aria-expanded="false" aria-label="Abrir navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="petsNav">
+                <div class="navbar-nav ms-auto gap-2">
+                    <a class="nav-chip" href="../../index.html"><i class="bi bi-grid-1x2"></i> Painel</a>
+                    <a class="nav-chip" href="../index.html"><i class="bi bi-person-heart"></i> Tutor</a>
+                    <a class="nav-chip active" href="./index.html"><i class="bi bi-house-heart"></i> Meus animais</a>
+                    <a class="nav-chip" href="../carteira_digital/index.html"><i class="bi bi-file-earmark-medical"></i> Carteira</a>
+                    <a class="nav-chip" href="../denuncias/index.html"><i class="bi bi-megaphone"></i> Denúncias</a>
+                    <a class="nav-chip" href="../marketplace_de_adocao/index.html"><i class="bi bi-search-heart"></i> Candidato</a>
+                    <a class="nav-chip" href="../../login/index.html"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="page-shell">
+        <section class="dashboard-band mb-4" data-entity="tutor_pets" data-endpoint="/api/tutor/pets">
+            <div class="band-head">
+                <span class="eyebrow mb-3"><i class="bi bi-house-heart"></i> Cadastro do tutor</span>
+                <h1>Cadastre seus animais e agende cuidados.</h1>
+                <p class="mt-3 mb-4">Guarde os dados básicos do pet para solicitar castração, vacina, microchipagem, consulta ou orientação com menos retrabalho.</p>
+                <div class="band-actions">
+                    <a class="btn btn-light" href="#petForm"><i class="bi bi-plus-circle"></i> Cadastrar animal</a>
+                    <a class="btn btn-light" href="../carteira_digital/index.html"><i class="bi bi-file-earmark-medical"></i> Carteira digital</a>
+                    <a class="btn btn-outline-light" href="#scheduleForm"><i class="bi bi-calendar2-plus"></i> Agendar serviço</a>
+                </div>
+            </div>
+            <div class="metric-strip">
+                <span><strong data-pet-count>0</strong><small>animais cadastrados</small></span>
+                <span><strong data-schedule-count>0</strong><small>agendamentos</small></span>
+                <span><strong>6</strong><small>serviços disponíveis</small></span>
+                <span><strong>local</strong><small>dados no navegador</small></span>
+            </div>
+        </section>
+
+        <section class="layout-grid">
+            <div class="tool-panel" data-pet-scope>
+                <div class="panel-title">
+                    <div>
+                        <span class="section-kicker">Meus animais</span>
+                        <h2>Lista do tutor</h2>
+                    </div>
+                    <a class="btn btn-outline-primary" href="#petForm"><i class="bi bi-plus-circle"></i> Novo</a>
+                </div>
+                <div id="tutorPetList" class="crud-list"></div>
+            </div>
+
+            <aside class="soft-panel">
+                <div class="panel-title">
+                    <div>
+                        <span class="section-kicker">Cadastro</span>
+                        <h2>Dados do animal</h2>
+                    </div>
+                </div>
+                <form class="prototype-form" id="petForm" data-pet-form>
+                    <input type="hidden" name="petId">
+                    <label class="form-label" for="petName">Nome</label>
+                    <input class="form-control" id="petName" name="name" required placeholder="Ex.: Thor">
+                    <div class="row g-2">
+                        <div class="col-sm-6">
+                            <label class="form-label" for="petType">Tipo</label>
+                            <select class="form-select" id="petType" name="type" required>
+                                <option value="">Selecione</option>
+                                <option>Cão</option>
+                                <option>Gato</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="form-label" for="petSex">Sexo</label>
+                            <select class="form-select" id="petSex" name="sex" required>
+                                <option value="">Selecione</option>
+                                <option>Fêmea</option>
+                                <option>Macho</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row g-2">
+                        <div class="col-sm-6">
+                            <label class="form-label" for="petAge">Idade aproximada</label>
+                            <input class="form-control" id="petAge" name="age" required placeholder="Ex.: 2 anos">
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="form-label" for="petSize">Porte</label>
+                            <select class="form-select" id="petSize" name="size" required>
+                                <option value="">Selecione</option>
+                                <option>Pequeno</option>
+                                <option>Médio</option>
+                                <option>Grande</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row g-2">
+                        <div class="col-sm-6">
+                            <label class="form-label" for="petBreed">Raça</label>
+                            <input class="form-control" id="petBreed" name="breed" placeholder="Ex.: SRD, siamês, poodle">
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="form-label" for="petStatus">Status</label>
+                            <select class="form-select" id="petStatus" name="status" required>
+                                <option value="">Selecione</option>
+                                <option>Em casa</option>
+                                <option>Perdido</option>
+                                <option>Encontrado</option>
+                                <option>Em tratamento</option>
+                                <option>Disponível para adoção</option>
+                            </select>
+                        </div>
+                    </div>
+                    <label class="form-label" for="petHealth">Saúde</label>
+                    <select class="form-select" id="petHealth" name="health" required>
+                        <option value="">Selecione</option>
+                        <option>Vacinado</option>
+                        <option>Castrado</option>
+                        <option>Vacina pendente</option>
+                        <option>Castração pendente</option>
+                        <option>Precisa de avaliação</option>
+                    </select>
+                    <label class="form-label" for="petPhotos">Fotos</label>
+                    <input class="form-control" id="petPhotos" name="photos" type="file" multiple accept="image/*">
+                    <div class="row g-2">
+                        <div class="col-sm-6">
+                            <label class="form-label" for="petIllnesses">Doenças pré-existentes</label>
+                            <textarea class="form-control" id="petIllnesses" name="illnesses" rows="2" placeholder="Ex.: dermatite, renal, nenhuma."></textarea>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="form-label" for="petAllergies">Alergias</label>
+                            <textarea class="form-control" id="petAllergies" name="allergies" rows="2" placeholder="Alimentos, remédios ou produtos."></textarea>
+                        </div>
+                    </div>
+                    <label class="form-label" for="petMedicines">Medicamentos de uso contínuo</label>
+                    <textarea class="form-control" id="petMedicines" name="medicines" rows="2" placeholder="Nome, dose e frequência, se houver."></textarea>
+                    <label class="form-label" for="petNotes">Observações</label>
+                    <textarea class="form-control" id="petNotes" name="notes" rows="4" placeholder="Comportamento, remédio, alergia, rotina ou qualquer cuidado importante."></textarea>
+                    <div class="action-row">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="bi bi-save"></i>
+                            <span data-pet-submit-label>Salvar animal</span>
+                        </button>
+                        <button class="btn btn-outline-primary" type="button" data-pet-reset>
+                            <i class="bi bi-x-circle"></i>
+                            Limpar
+                        </button>
+                    </div>
+                </form>
+            </aside>
+        </section>
+
+        <section class="layout-grid mt-4">
+            <div class="tool-panel">
+                <div class="panel-title">
+                    <div>
+                        <span class="section-kicker">Agenda</span>
+                        <h2>Pedidos de atendimento</h2>
+                    </div>
+                </div>
+                <div id="petScheduleList" class="calendar-board"></div>
+            </div>
+
+            <aside class="soft-panel">
+                <div class="panel-title">
+                    <div>
+                        <span class="section-kicker">Novo agendamento</span>
+                        <h2>Solicitar serviço</h2>
+                    </div>
+                </div>
+                <form class="prototype-form" id="scheduleForm" data-pet-schedule-form>
+                    <label class="form-label" for="schedulePet">Animal</label>
+                    <select class="form-select" id="schedulePet" name="petId" required></select>
+                    <label class="form-label" for="scheduleService">Serviço</label>
+                    <select class="form-select" id="scheduleService" name="service" required>
+                        <option value="">Selecione</option>
+                        <option>Castração</option>
+                        <option>Vacinação</option>
+                        <option>Microchipagem</option>
+                        <option>Consulta</option>
+                        <option>Atendimento emergencial</option>
+                        <option>Orientação</option>
+                    </select>
+                    <div class="row g-2">
+                        <div class="col-sm-6">
+                            <label class="form-label" for="scheduleDate">Data desejada</label>
+                            <input class="form-control" id="scheduleDate" name="date" type="date" required>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="form-label" for="schedulePeriod">Período</label>
+                            <select class="form-select" id="schedulePeriod" name="period" required>
+                                <option value="">Selecione</option>
+                                <option>Manhã</option>
+                                <option>Tarde</option>
+                                <option>Noite</option>
+                            </select>
+                        </div>
+                    </div>
+                    <label class="form-label" for="scheduleNotes">Resumo</label>
+                    <textarea class="form-control" id="scheduleNotes" name="notes" rows="4" placeholder="Explique o motivo do atendimento ou alguma restrição de horário."></textarea>
+                    <button class="btn btn-primary" type="submit"><i class="bi bi-calendar2-plus"></i> Salvar agendamento</button>
+                    <div class="form-note" role="status"></div>
+                </form>
+            </aside>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/arca-app.js"></script>
+</body>
+</html>
