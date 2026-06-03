@@ -1,60 +1,83 @@
+
+
 const videos = document.querySelectorAll(".icone_login");
 
-videos.forEach((video) => {
-  video.addEventListener("error", () => {
-    const wrap = video.closest(".opcao-icon-wrap");
-    if (!wrap) return;
-    video.style.display = "none";
-    const fallback = wrap.querySelector(".opcao-icon-fallback");
-    if (fallback) fallback.style.display = "flex";
-  });
+videos.forEach(video => {
 
-  video.closest(".opcao")?.addEventListener("mouseenter", () => {
-    video.play().catch(() => {});
-  });
+    video.addEventListener("error", () => {
+        const wrap = video.closest(".opcao-icon-wrap");
+        if (wrap) {
+            video.style.display = "none";
+            const fallback = wrap.querySelector(".opcao-icon-fallback");
+            if (fallback) fallback.style.display = "flex";
+        }
+    });
+
+    video.closest(".opcao")?.addEventListener("mouseenter", () => {
+        video.play().catch(() => {}); 
+    });
+
+    video.closest(".opcao")?.addEventListener("mouseleave", () => {
+
+    });
 });
 
 const opcoes = document.querySelectorAll(".opcao");
 const container = document.querySelector(".contas");
 
-opcoes.forEach((opcao) => {
-  const ativar = () => {
-    opcoes.forEach((o) => o.classList.remove("ativa"));
-    opcao.classList.add("ativa");
-  };
+opcoes.forEach(opcao => {
+    opcao.addEventListener("mouseenter", () => {
+        opcoes.forEach(o => o.classList.remove("ativa"));
+        opcao.classList.add("ativa");
+    });
 
-  opcao.addEventListener("mouseenter", ativar);
-  opcao.addEventListener("focus", ativar);
+    opcao.addEventListener("focus", () => {
+        opcoes.forEach(o => o.classList.remove("ativa"));
+        opcao.classList.add("ativa");
+    });
 });
 
-container?.addEventListener("mouseleave", () => {
-  opcoes.forEach((o) => o.classList.remove("ativa"));
-  if (opcoes[1]) opcoes[1].classList.add("ativa");
-});
+if (container) {
+    container.addEventListener("mouseleave", () => {
+        opcoes.forEach(o => o.classList.remove("ativa"));
+        if (opcoes[1]) opcoes[1].classList.add("ativa"); 
+    });
+}
 
 const reveals = document.querySelectorAll(".reveal");
 
-if ("IntersectionObserver" in window) {
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add("visible"), index * 80);
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
 
-  reveals.forEach((el) => revealObserver.observe(el));
-} else {
-  reveals.forEach((el) => el.classList.add("visible"));
-}
+            setTimeout(() => {
+                entry.target.classList.add("visible");
+            }, i * 80);
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.12 });
+
+reveals.forEach(el => revealObserver.observe(el));
 
 const nav = document.querySelector("nav");
 window.addEventListener("scroll", () => {
-  nav?.classList.toggle("scrolled", window.scrollY > 30);
+    if (window.scrollY > 30) {
+        nav?.classList.add("scrolled");
+    } else {
+        nav?.classList.remove("scrolled");
+    }
 }, { passive: true });
 
-document.querySelector(".hero-cta")?.addEventListener("click", (event) => {
-  event.preventDefault();
-  document.querySelector("#contas")?.scrollIntoView({ behavior: "smooth", block: "start" });
+document.querySelector(".hero-cta")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    const target = document.querySelector("
+    if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        setTimeout(() => {
+            const cards = document.querySelector(".contas");
+            if (cards) cards.style.animationPlayState = "running";
+        }, 600);
+    }
 });
