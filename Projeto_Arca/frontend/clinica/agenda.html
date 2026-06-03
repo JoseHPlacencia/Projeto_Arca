@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ARCA | Agenda Clínica</title>
+    <link href="https:
+    <link href="https:
+    <link href="../assets/css/variables.css" rel="stylesheet">
+    <link href="../assets/css/arca-app.css" rel="stylesheet">
+</head>
+<body class="app-page" data-page="clinica-agenda">
+    <nav class="navbar navbar-expand-lg arca-nav sticky-top">
+        <div class="container-fluid px-3 px-lg-5">
+            <a class="arca-brand" href="./agenda.html" aria-label="Clínica parceira">
+                <img class="arca-logo-img" src="../assets/img/arca-logo.png" alt="Programa Arca">
+            </a>
+            <span class="arca-brand-label d-none d-sm-inline">Clínica parceira</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="clinicNav">
+                <div class="navbar-nav ms-auto gap-2">
+                    <a class="nav-chip" href="../../index.html"><i class="bi bi-grid-1x2"></i> Painel</a>
+                    <a class="nav-chip active" href="./agenda.html"><i class="bi bi-calendar2-check"></i> Agenda</a>
+                    <a class="nav-chip" href="./prontuario.html"><i class="bi bi-journal-medical"></i> Prontuário</a>
+                    <a class="nav-chip" href="../ong/dashboard.html"><i class="bi bi-building-heart"></i> ONG</a>
+                    <a class="nav-chip" href="../login/ong.html"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="page-shell">
+        <section class="dashboard-band mb-4" data-entity="clinic_schedule" data-endpoint="/api/clinic/appointments">
+            <div class="band-head">
+                <span class="eyebrow mb-3"><i class="bi bi-clipboard2-pulse"></i> Agenda com contexto</span>
+                <h1>Atendimentos do dia sem planilha perdida.</h1>
+                <p class="mt-3 mb-4">Cada horário exibe tutor, animal, origem e status para a equipe iniciar o atendimento com contexto.</p>
+                <div class="band-actions">
+                    <a class="btn btn-light" href="./prontuario.html"><i class="bi bi-journal-medical"></i> Abrir prontuário</a>
+                    <a class="btn btn-outline-light" href="../ong/estoque.html"><i class="bi bi-box-seam"></i> Conferir insumos</a>
+                </div>
+            </div>
+            <div class="metric-strip">
+                <span><strong>9</strong><small>consultas hoje</small></span>
+                <span><strong>3</strong><small>vacinas pendentes</small></span>
+                <span><strong>2</strong><small>retornos críticos</small></span>
+                <span><strong>14h</strong><small>próxima vaga</small></span>
+            </div>
+        </section>
+
+        <section class="stat-grid mb-4">
+            <article class="metric-tile">
+                <strong>72%</strong>
+                <span>ocupação da agenda</span>
+            </article>
+            <article class="metric-tile">
+                <strong>18</strong>
+                <span>animais atendidos na semana</span>
+            </article>
+            <article class="metric-tile">
+                <strong>5</strong>
+                <span>laudos esperando upload</span>
+            </article>
+            <article class="metric-tile">
+                <strong>4.8</strong>
+                <span>tempo médio de triagem</span>
+            </article>
+        </section>
+
+        <section class="layout-grid">
+            <div class="tool-panel" data-filter-scope>
+                <div class="panel-title">
+                    <div>
+                        <span class="section-kicker">Fila de atendimento</span>
+                        <h2><span data-filter-count>0</span> horários na tela</h2>
+                    </div>
+                    <div class="input-group" style="max-width: 320px;">
+                        <span class="input-group-text"><i class="bi bi-search"></i></span>
+                        <input class="form-control" type="search" placeholder="Buscar animal, tutor..." data-live-search="
+                    </div>
+                </div>
+                <div class="filter-bar" role="tablist" aria-label="Filtrar agenda">
+                    <button class="filter-pill" type="button" data-filter-button="todos">Todos</button>
+                    <button class="filter-pill" type="button" data-filter-button="triagem">Triagem</button>
+                    <button class="filter-pill" type="button" data-filter-button="vacina">Vacina</button>
+                    <button class="filter-pill" type="button" data-filter-button="retorno">Retorno</button>
+                    <button class="filter-pill" type="button" data-filter-button="cirurgia">Cirurgia</button>
+                </div>
+                <div class="calendar-board" id="agendaBoard">
+                    <article class="calendar-slot" data-filter-item data-filter-tags="triagem" data-search-text="Nina Luana Associação Patas Unidas triagem" data-record-id="APT-3001">
+                        <span class="slot-time">08:30</span>
+                        <div>
+                            <strong>Nina · triagem pré-adoção</strong>
+                            <span class="d-block">Tutora interessada: Luana · Associação Patas Unidas</span>
+                            <div class="slot-meta"><span class="badge-soft mint">confirmado</span><span class="badge-soft">cão</span><span class="badge-soft">APT-3001</span></div>
+                        </div>
+                        <a class="btn btn-outline-primary" href="./prontuario.html"><i class="bi bi-file-earmark-medical"></i> Abrir</a>
+                    </article>
+                    <article class="calendar-slot" data-filter-item data-filter-tags="vacina" data-search-text="Tom Instituto Gato Seguro vacina V4" data-record-id="APT-3002">
+                        <span class="slot-time">09:15</span>
+                        <div>
+                            <strong>Tom · vacina V4</strong>
+                            <span class="d-block">Instituto Gato Seguro · lote precisa ser conferido no estoque</span>
+                            <div class="slot-meta"><span class="badge-soft sun">aguarda lote</span><span class="badge-soft">gato</span><span class="badge-soft">APT-3002</span></div>
+                        </div>
+                        <a class="btn btn-outline-primary" href="./prontuario.html"><i class="bi bi-file-earmark-medical"></i> Abrir</a>
+                    </article>
+                    <article class="calendar-slot" data-filter-item data-filter-tags="retorno" data-search-text="Gaia retorno geriátrico suplemento articular" data-record-id="APT-3003">
+                        <span class="slot-time">10:40</span>
+                        <div>
+                            <strong>Gaia · retorno geriátrico</strong>
+                            <span class="d-block">Revisar suplemento articular e ajustar dose.</span>
+                            <div class="slot-meta"><span class="badge-soft coral">atenção</span><span class="badge-soft">idosa</span><span class="badge-soft">APT-3003</span></div>
+                        </div>
+                        <a class="btn btn-outline-primary" href="./prontuario.html"><i class="bi bi-file-earmark-medical"></i> Abrir</a>
+                    </article>
+                    <article class="calendar-slot" data-filter-item data-filter-tags="cirurgia" data-search-text="Luma castração filhote pré operatório" data-record-id="APT-3004">
+                        <span class="slot-time">14:00</span>
+                        <div>
+                            <strong>Luma · pré-operatório</strong>
+                            <span class="d-block">Checar jejum, peso atual e autorização da ONG.</span>
+                            <div class="slot-meta"><span class="badge-soft mint">vaga reservada</span><span class="badge-soft">filhote</span><span class="badge-soft">APT-3004</span></div>
+                        </div>
+                        <a class="btn btn-outline-primary" href="./prontuario.html"><i class="bi bi-file-earmark-medical"></i> Abrir</a>
+                    </article>
+                    <article class="calendar-slot" data-filter-item data-filter-tags="vacina retorno" data-search-text="Chico retorno exames renais vacina" data-record-id="APT-3005">
+                        <span class="slot-time">16:20</span>
+                        <div>
+                            <strong>Chico · revisão de exames</strong>
+                            <span class="d-block">Comparar creatinina com o exame anterior.</span>
+                            <div class="slot-meta"><span class="badge-soft">retorno</span><span class="badge-soft">gato</span><span class="badge-soft">APT-3005</span></div>
+                        </div>
+                        <a class="btn btn-outline-primary" href="./prontuario.html"><i class="bi bi-file-earmark-medical"></i> Abrir</a>
+                    </article>
+                </div>
+            </div>
+
+            <aside class="soft-panel">
+                <div class="panel-title">
+                    <div>
+                        <span class="section-kicker">Encaixe rápido</span>
+                        <h2>Novo atendimento</h2>
+                    </div>
+                </div>
+                <form class="prototype-form" id="appointmentForm" data-prototype-form data-entity="clinic_appointment" data-endpoint="/api/clinic/appointments">
+                    <label class="form-label" for="animalName">Animal</label>
+                    <input class="form-control" id="animalName" name="animal_name" required placeholder="Ex.: Brisa">
+                    <div class="row g-2">
+                        <div class="col-sm-6">
+                            <label class="form-label" for="appointmentTime">Horário</label>
+                            <input class="form-control" id="appointmentTime" name="scheduled_at" type="time" required>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="form-label" for="appointmentKind">Tipo</label>
+                            <select class="form-select" id="appointmentKind" name="kind" required>
+                                <option value="">Selecione</option>
+                                <option>Triagem</option>
+                                <option>Vacina</option>
+                                <option>Retorno</option>
+                                <option>Cirurgia</option>
+                            </select>
+                        </div>
+                    </div>
+                    <label class="form-label" for="appointmentNotes">Observações</label>
+                    <textarea class="form-control" id="appointmentNotes" name="notes" rows="4" placeholder="Sintoma, origem, restrição de manejo..."></textarea>
+                    <button class="btn btn-primary" type="submit"><i class="bi bi-plus-circle"></i> Salvar encaixe</button>
+                    <div class="form-note" role="status"></div>
+                </form>
+                <hr>
+                <div class="mini-feed">
+                    <article class="feed-row">
+                        <span class="feed-icon"><i class="bi bi-file-earmark-medical"></i></span>
+                        <div><strong>Exames pendentes</strong><span class="d-block">5 uploads aguardando vínculo ao prontuário.</span></div>
+                        <span class="status-dot warn" aria-hidden="true"></span>
+                    </article>
+                    <article class="feed-row">
+                        <span class="feed-icon"><i class="bi bi-capsule"></i></span>
+                        <div><strong>Lotes em uso</strong><span class="d-block">V4, antirrábica e vermífugo com rastreio.</span></div>
+                        <span class="status-dot" aria-hidden="true"></span>
+                    </article>
+                </div>
+            </aside>
+        </section>
+    </main>
+
+    <script src="https:
+    <script src="../assets/js/arca-app.js"></script>
+</body>
+</html>

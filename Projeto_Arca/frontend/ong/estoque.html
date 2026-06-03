@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ARCA | Estoque ONG</title>
+    <link href="https:
+    <link href="https:
+    <link href="../assets/css/variables.css" rel="stylesheet">
+    <link href="../assets/css/arca-app.css" rel="stylesheet">
+</head>
+<body class="app-page" data-page="ong-estoque">
+    <nav class="navbar navbar-expand-lg arca-nav sticky-top">
+        <div class="container-fluid px-3 px-lg-5">
+            <a class="arca-brand" href="../index.html" aria-label="Programa Arca">
+                <img class="arca-logo-img" src="../assets/img/arca-logo.png" alt="Programa Arca">
+            </a>
+            <span class="arca-brand-label d-none d-sm-inline">Estoque da ONG</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="stockNav">
+                <div class="navbar-nav ms-auto gap-2">
+                    <a class="nav-chip" href="../../index.html"><i class="bi bi-grid-1x2"></i> Painel</a>
+                    <a class="nav-chip" href="./home_ong.html"><i class="bi bi-building-heart"></i> ONG</a>
+                    <a class="nav-chip active" href="./estoque.html"><i class="bi bi-box-seam"></i> Estoque</a>
+                    <a class="nav-chip" href="../clinica/agenda.html"><i class="bi bi-clipboard2-pulse"></i> Clínica</a>
+                    <a class="nav-chip" href="../login/ong.html"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="page-shell">
+        <section class="dashboard-band mb-4" data-entity="inventory" data-endpoint="/api/ong/inventory">
+            <div class="band-head">
+                <span class="eyebrow mb-3"><i class="bi bi-box-seam"></i> Estoque em dia</span>
+                <h1>Estoque com mínimo, consumo e prioridade de compra.</h1>
+                <p class="mt-3 mb-4">A tela separa categoria, quantidade, lote e status, com cadastro funcional para entrada, edição e exclusão de itens.</p>
+                <div class="band-actions">
+                    <a class="btn btn-light" href="./dashboard.html"><i class="bi bi-arrow-left"></i> Voltar ao abrigo</a>
+                    <a class="btn btn-outline-light" href="../clinica/agenda.html"><i class="bi bi-capsule"></i> Ver agenda clínica</a>
+                </div>
+            </div>
+            <div class="metric-strip">
+                <span><strong>31</strong><small>itens cadastrados</small></span>
+                <span><strong>5</strong><small>abaixo do mínimo</small></span>
+                <span><strong>3</strong><small>lotes vencem em 30 dias</small></span>
+                <span><strong>R$ 820</strong><small>compra estimada</small></span>
+            </div>
+        </section>
+
+        <section class="layout-grid">
+            <div class="tool-panel" data-inventory-crud data-storage-key="arcaInventoryItems">
+                <div class="panel-title">
+                    <div>
+                        <span class="section-kicker">Inventário</span>
+                        <h2><span data-inventory-count>0</span> itens listados</h2>
+                    </div>
+                    <div class="input-group" style="max-width: 320px;">
+                        <span class="input-group-text"><i class="bi bi-search"></i></span>
+                        <input class="form-control" type="search" placeholder="Buscar item..." data-inventory-search>
+                    </div>
+                </div>
+                <div class="filter-bar" role="tablist" aria-label="Filtrar estoque">
+                    <button class="filter-pill" type="button" data-inventory-filter="todos">Todos</button>
+                    <button class="filter-pill" type="button" data-inventory-filter="alimento">Alimento</button>
+                    <button class="filter-pill" type="button" data-inventory-filter="medicamento">Medicamento</button>
+                    <button class="filter-pill" type="button" data-inventory-filter="higiene">Higiene</button>
+                    <button class="filter-pill" type="button" data-inventory-filter="baixo">Baixo</button>
+                </div>
+                <div class="inventory-list" id="stockList"></div>
+            </div>
+
+            <aside class="soft-panel">
+                <div class="panel-title">
+                    <div>
+                        <span class="section-kicker">Cadastro</span>
+                        <h2>Item do estoque</h2>
+                    </div>
+                </div>
+                <form class="prototype-form" id="stockItemForm" data-inventory-form data-entity="inventory_item" data-endpoint="/api/ong/inventory">
+                    <input type="hidden" name="itemId">
+                    <label class="form-label" for="stockItem">Item</label>
+                    <input class="form-control" id="stockItem" name="name" required placeholder="Ex.: Ração filhote cães">
+                    <div class="row g-2">
+                        <div class="col-sm-6">
+                            <label class="form-label" for="stockCategory">Categoria</label>
+                            <select class="form-select" id="stockCategory" name="category" required>
+                                <option value="">Selecione</option>
+                                <option value="alimento">Alimento</option>
+                                <option value="medicamento">Medicamento</option>
+                                <option value="higiene">Higiene</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="form-label" for="stockStatus">Status</label>
+                            <select class="form-select" id="stockStatus" name="status" required>
+                                <option value="ok">Ok</option>
+                                <option value="atenção">Atenção</option>
+                                <option value="baixo">Baixo</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row g-2">
+                        <div class="col-sm-4">
+                            <label class="form-label" for="stockQty">Atual</label>
+                            <input class="form-control" id="stockQty" name="quantity" type="number" min="0" step="1" required placeholder="0">
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="form-label" for="stockMin">Mínimo</label>
+                            <input class="form-control" id="stockMin" name="minimum" type="number" min="1" step="1" required placeholder="0">
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="form-label" for="stockUnit">Unidade</label>
+                            <input class="form-control" id="stockUnit" name="unit" required placeholder="kg">
+                        </div>
+                    </div>
+                    <label class="form-label" for="stockNotes">Observações</label>
+                    <textarea class="form-control" id="stockNotes" name="notes" rows="4" required placeholder="Lote, validade, armário ou consumo médio."></textarea>
+                    <div class="action-row">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="bi bi-save"></i>
+                            <span data-inventory-submit-label>Salvar item</span>
+                        </button>
+                        <button class="btn btn-outline-primary" type="button" data-inventory-reset>
+                            <i class="bi bi-x-circle"></i>
+                            Limpar
+                        </button>
+                    </div>
+                </form>
+
+                <hr>
+                <div class="panel-title mb-2">
+                    <div>
+                        <span class="section-kicker">Lista de compra</span>
+                        <h2>Prioridade da semana</h2>
+                    </div>
+                </div>
+                <div class="mini-feed">
+                    <article class="feed-row">
+                        <span class="feed-icon"><i class="bi bi-basket"></i></span>
+                        <div><strong>Ração filhote cães</strong><span class="d-block">Comprar 28 kg para voltar ao mínimo.</span></div>
+                        <span class="badge-soft coral">alta</span>
+                    </article>
+                    <article class="feed-row">
+                        <span class="feed-icon"><i class="bi bi-capsule"></i></span>
+                        <div><strong>Vermífugo 10 kg</strong><span class="d-block">Fechar cotação antes do fim do mês.</span></div>
+                        <span class="badge-soft coral">alta</span>
+                    </article>
+                    <article class="feed-row">
+                        <span class="feed-icon"><i class="bi bi-droplet"></i></span>
+                        <div><strong>V4 felina</strong><span class="d-block">Usar lote atual antes de comprar mais.</span></div>
+                        <span class="badge-soft sun">atenção</span>
+                    </article>
+                </div>
+            </aside>
+        </section>
+    </main>
+
+    <script src="https:
+    <script src="../assets/js/arca-app.js"></script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ARCA | Carteira Digital</title>
+    <link href="https:
+    <link href="https:
+    <link href="../../assets/css/variables.css" rel="stylesheet">
+    <link href="../../assets/css/arca-app.css" rel="stylesheet">
+</head>
+<body class="app-page" data-page="carteira-digital">
+    <nav class="navbar navbar-expand-lg arca-nav sticky-top">
+        <div class="container-fluid px-3 px-lg-5">
+            <a class="arca-brand" href="../../index.html" aria-label="Programa Arca">
+                <img class="arca-logo-img" src="../../assets/img/arca-logo.png" alt="Programa Arca">
+            </a>
+            <span class="arca-brand-label d-none d-sm-inline">Carteira digital</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="walletNav">
+                <div class="navbar-nav ms-auto gap-2">
+                    <a class="nav-chip" href="../../index.html"><i class="bi bi-grid-1x2"></i> Painel</a>
+                    <a class="nav-chip" href="../home_cidadao.html"><i class="bi bi-person-heart"></i> Tutor</a>
+                    <a class="nav-chip" href="../meus_animais/animais_cidadao.html"><i class="bi bi-house-heart"></i> Meus animais</a>
+                    <a class="nav-chip active" href="./carteira_digital.html"><i class="bi bi-file-earmark-medical"></i> Carteira</a>
+                    <a class="nav-chip" href="../denuncias/denuncias.html"><i class="bi bi-megaphone"></i> Denúncias</a>
+                    <a class="nav-chip" href="../marketplace_de_adocao/marketplace_animais.html"><i class="bi bi-search-heart"></i> Adoção</a>
+                    <a class="nav-chip" href="../../login/cidadao.html"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="page-shell" data-wallet>
+        <section class="dashboard-band mb-4" data-entity="animal_wallet" data-endpoint="/api/animals/{id}/wallet">
+            <div class="band-head">
+                <span class="eyebrow mb-3"><i class="bi bi-file-earmark-medical"></i> Histórico do animal</span>
+                <h1>Carteira digital com vacinas, microchip e comprovantes.</h1>
+                <p class="mt-3 mb-4">Escolha um pet cadastrado para ver por onde ele passou, quais cuidados recebeu e quais protocolos já foram emitidos.</p>
+                <div class="band-actions">
+                    <a class="btn btn-light" href="../meus_animais/index.html"><i class="bi bi-house-heart"></i> Meus animais</a>
+                    <a class="btn btn-outline-light" href="
+                </div>
+            </div>
+            <div class="metric-strip">
+                <span><strong data-wallet-total>0</strong><small>registros</small></span>
+                <span><strong data-wallet-vaccines>0</strong><small>vacinas</small></span>
+                <span><strong data-wallet-chip>0</strong><small>microchips</small></span>
+                <span><strong data-wallet-places>0</strong><small>locais no histórico</small></span>
+            </div>
+        </section>
+
+        <section class="layout-grid">
+            <div class="tool-panel">
+                <div class="panel-title">
+                    <div>
+                        <span class="section-kicker">Carteira</span>
+                        <h2>Histórico e comprovantes</h2>
+                    </div>
+                    <select class="form-select wallet-select" id="walletPetSelect" aria-label="Selecionar animal"></select>
+                </div>
+                <div id="walletPetCard" class="wallet-card mb-3"></div>
+                <div id="walletTimeline" class="timeline-list"></div>
+            </div>
+
+            <aside class="soft-panel">
+                <div class="panel-title">
+                    <div>
+                        <span class="section-kicker">Comprovante</span>
+                        <h2>Novo registro</h2>
+                    </div>
+                </div>
+                <form class="prototype-form" id="walletRecordForm" data-wallet-form>
+                    <label class="form-label" for="walletPet">Animal</label>
+                    <select class="form-select" id="walletPet" name="petId" required></select>
+                    <label class="form-label" for="walletType">Tipo</label>
+                    <select class="form-select" id="walletType" name="type" required>
+                        <option value="">Selecione</option>
+                        <option>Vacina</option>
+                        <option>Consulta</option>
+                        <option>Castração</option>
+                        <option>Microchipagem</option>
+                        <option>Adoção</option>
+                        <option>Passagem por ONG</option>
+                        <option>Passagem por clínica</option>
+                    </select>
+                    <div class="row g-2">
+                        <div class="col-sm-6">
+                            <label class="form-label" for="walletDate">Data</label>
+                            <input class="form-control" id="walletDate" name="date" type="date" required>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="form-label" for="walletProtocol">Protocolo</label>
+                            <input class="form-control" id="walletProtocol" name="protocol" placeholder="Ex.: VAC-1234">
+                        </div>
+                    </div>
+                    <label class="form-label" for="walletPlace">Local</label>
+                    <input class="form-control" id="walletPlace" name="place" required placeholder="Clínica, ONG ou mutirão">
+                    <label class="form-label" for="walletProfessional">Responsável</label>
+                    <input class="form-control" id="walletProfessional" name="professional" placeholder="Profissional ou equipe">
+                    <label class="form-label" for="walletNotes">Detalhes</label>
+                    <textarea class="form-control" id="walletNotes" name="notes" rows="4" placeholder="Lote da vacina, número do microchip, observações clínicas ou histórico de passagem."></textarea>
+                    <label class="form-label" for="walletEvidence">Comprovante</label>
+                    <input class="form-control" id="walletEvidence" name="evidence" type="file" multiple accept="image/*,.pdf">
+                    <button class="btn btn-primary" type="submit"><i class="bi bi-save"></i> Salvar registro</button>
+                    <div class="form-note" role="status"></div>
+                </form>
+            </aside>
+        </section>
+    </main>
+
+    <script src="https:
+    <script src="../../assets/js/arca-app.js"></script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ARCA | Prontuário</title>
+    <link href="https:
+    <link href="https:
+    <link href="../assets/css/variables.css" rel="stylesheet">
+    <link href="../assets/css/arca-app.css" rel="stylesheet">
+</head>
+<body class="app-page" data-page="clinica-prontuario">
+    <nav class="navbar navbar-expand-lg arca-nav sticky-top">
+        <div class="container-fluid px-3 px-lg-5">
+            <a class="arca-brand" href="./agenda.html" aria-label="Clínica parceira">
+                <img class="arca-logo-img" src="../assets/img/arca-logo.png" alt="Programa Arca">
+            </a>
+            <span class="arca-brand-label d-none d-sm-inline">Prontuário clínico</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="recordNav">
+                <div class="navbar-nav ms-auto gap-2">
+                    <a class="nav-chip" href="../../index.html"><i class="bi bi-grid-1x2"></i> Painel</a>
+                    <a class="nav-chip" href="./agenda.html"><i class="bi bi-calendar2-check"></i> Agenda</a>
+                    <a class="nav-chip active" href="./prontuario.html"><i class="bi bi-journal-medical"></i> Prontuário</a>
+                    <a class="nav-chip" href="../ong/estoque.html"><i class="bi bi-box-seam"></i> Estoque</a>
+                    <a class="nav-chip" href="../login/ong.html"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="page-shell">
+        <section class="dashboard-band mb-4" data-entity="medical_record" data-endpoint="/api/clinic/records">
+            <div class="band-head">
+                <span class="eyebrow mb-3"><i class="bi bi-journal-medical"></i> Histórico pronto para consulta</span>
+                <h1>Prontuário com linha do tempo, vacinas e anexos.</h1>
+                <p class="mt-3 mb-4">O prontuário separa animal, tutor, atendimento, vacina, exame e observação clínica para leitura rápida.</p>
+                <div class="band-actions">
+                    <a class="btn btn-light" href="./agenda.html"><i class="bi bi-calendar2-check"></i> Voltar à agenda</a>
+                    <a class="btn btn-outline-light" href="../cidadao/marketplace_de_adocao/detalhes.html?id=nina"><i class="bi bi-eye"></i> Ver perfil público</a>
+                </div>
+            </div>
+            <div class="metric-strip">
+                <span><strong>Nina</strong><small>paciente em foco</small></span>
+                <span><strong>6</strong><small>eventos clínicos</small></span>
+                <span><strong>3</strong><small>vacinas registradas</small></span>
+                <span><strong>1</strong><small>retorno aberto</small></span>
+            </div>
+        </section>
+
+        <section class="layout-grid">
+            <div class="tool-panel">
+                <div class="panel-title">
+                    <div>
+                        <span class="section-kicker">Paciente</span>
+                        <h2>Nina · SRD · fêmea</h2>
+                    </div>
+                    <span class="badge-soft mint">apta para visita</span>
+                </div>
+                <div class="animal-peek mb-3" data-record-id="ANM-0001">
+                    <img src="https:
+                    <div>
+                        <strong>Nina</strong>
+                        <span class="d-block">1 ano e 6 meses · 16,4 kg · Associação Patas Unidas</span>
+                    </div>
+                </div>
+                <div class="record-grid mb-4">
+                    <article class="record-card">
+                        <span class="badge-soft">tutor temporário</span>
+                        <div>
+                            <strong>Marina Alves</strong>
+                            <p class="mb-0">Contato autorizado para entrevista de adoção.</p>
+                        </div>
+                    </article>
+                    <article class="record-card">
+                        <span class="badge-soft mint">saúde</span>
+                        <div>
+                            <strong>Vacinada e castrada</strong>
+                            <p class="mb-0">Sem medicação contínua no momento.</p>
+                        </div>
+                    </article>
+                    <article class="record-card">
+                        <span class="badge-soft sun">manejo</span>
+                        <div>
+                            <strong>Prefere abordagem calma</strong>
+                            <p class="mb-0">Boa resposta a petiscos e comando curto.</p>
+                        </div>
+                    </article>
+                    <article class="record-card">
+                        <span class="badge-soft">próximo passo</span>
+                        <div>
+                            <strong>Retorno em 21 dias</strong>
+                            <p class="mb-0">Revisar pele e liberar termo final.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="panel-title">
+                    <div>
+                        <span class="section-kicker">Linha do tempo</span>
+                        <h2>Eventos clínicos</h2>
+                    </div>
+                </div>
+                <div class="timeline-list">
+                    <article class="timeline-item" data-record-id="EVT-701">
+                        <i class="bi bi-clipboard2-pulse"></i>
+                        <div><strong>Triagem de entrada</strong><p class="mb-0">Escoriações leves tratadas; sem febre. Março/2026.</p></div>
+                    </article>
+                    <article class="timeline-item" data-record-id="EVT-702">
+                        <i class="bi bi-capsule"></i>
+                        <div><strong>Vermifugação</strong><p class="mb-0">Dose aplicada e retorno programado. Abril/2026.</p></div>
+                    </article>
+                    <article class="timeline-item" data-record-id="EVT-703">
+                        <i class="bi bi-scissors"></i>
+                        <div><strong>Castração</strong><p class="mb-0">Procedimento sem intercorrência. Abril/2026.</p></div>
+                    </article>
+                    <article class="timeline-item" data-record-id="EVT-704">
+                        <i class="bi bi-heart-pulse"></i>
+                        <div><strong>Retorno pós-operatório</strong><p class="mb-0">Boa cicatrização, liberada para visitas. Maio/2026.</p></div>
+                    </article>
+                </div>
+            </div>
+
+            <aside class="soft-panel" data-tabs>
+                <div class="panel-title">
+                    <div>
+                        <span class="section-kicker">Abas clínicas</span>
+                        <h2>Resumo do atendimento</h2>
+                    </div>
+                </div>
+                <div class="filter-bar" role="tablist" aria-label="Dados do prontuário">
+                    <button class="filter-pill" type="button" data-tab="resumo">Resumo</button>
+                    <button class="filter-pill" type="button" data-tab="vacinas">Vacinas</button>
+                    <button class="filter-pill" type="button" data-tab="exames">Exames</button>
+                </div>
+
+                <section data-tab-panel="resumo">
+                    <div class="mini-feed">
+                        <article class="feed-row">
+                            <span class="feed-icon"><i class="bi bi-clipboard2-pulse"></i></span>
+                            <div><strong>Queixa principal</strong><span class="d-block">Revisão geral antes de entrevista de adoção.</span></div>
+                            <span class="badge-soft mint">ok</span>
+                        </article>
+                        <article class="feed-row">
+                            <span class="feed-icon"><i class="bi bi-basket"></i></span>
+                            <div><strong>Alimentação</strong><span class="d-block">Ração seca, duas porções ao dia, boa aceitação.</span></div>
+                            <span class="badge-soft">rotina</span>
+                        </article>
+                        <article class="feed-row">
+                            <span class="feed-icon"><i class="bi bi-person-heart"></i></span>
+                            <div><strong>Comportamento</strong><span class="d-block">Sociável, caminha de guia, estranha barulho alto.</span></div>
+                            <span class="badge-soft sun">observar</span>
+                        </article>
+                    </div>
+                </section>
+
+                <section data-tab-panel="vacinas">
+                    <div class="calendar-board">
+                        <article class="calendar-slot" data-record-id="VAC-901">
+                            <span class="slot-time">V10</span>
+                            <div><strong>Aplicada em 12/04/2026</strong><span class="d-block">Lote V10-2419 · reforço em 2027</span></div>
+                            <span class="badge-soft mint">válida</span>
+                        </article>
+                        <article class="calendar-slot" data-record-id="VAC-902">
+                            <span class="slot-time">Raiva</span>
+                            <div><strong>Aplicada em 19/04/2026</strong><span class="d-block">Lote RV-8842 · campanha pública</span></div>
+                            <span class="badge-soft mint">válida</span>
+                        </article>
+                        <article class="calendar-slot" data-record-id="VAC-903">
+                            <span class="slot-time">Giárdia</span>
+                            <div><strong>Reforço pendente</strong><span class="d-block">Sugerido antes da adoção final.</span></div>
+                            <span class="badge-soft sun">pendente</span>
+                        </article>
+                    </div>
+                </section>
+
+                <section data-tab-panel="exames">
+                    <div class="record-grid">
+                        <article class="record-card" data-record-id="LAB-300">
+                            <span class="badge-soft mint">hemograma</span>
+                            <div><strong>Sem alterações relevantes</strong><p class="mb-0">Documento anexado ao histórico clínico.</p></div>
+                        </article>
+                        <article class="record-card" data-record-id="LAB-301">
+                            <span class="badge-soft">pele</span>
+                            <div><strong>Raspado negativo</strong><p class="mb-0">Tratamento tópico finalizado.</p></div>
+                        </article>
+                    </div>
+                </section>
+
+                <hr>
+                <form class="prototype-form" id="clinicalNoteForm" data-prototype-form data-entity="clinical_note" data-endpoint="/api/clinic/records/ANM-0001/notes">
+                    <label class="form-label" for="noteType">Nova anotação</label>
+                    <select class="form-select" id="noteType" name="type" required>
+                        <option value="">Tipo</option>
+                        <option>Consulta</option>
+                        <option>Vacina</option>
+                        <option>Exame</option>
+                        <option>Comportamento</option>
+                    </select>
+                    <textarea class="form-control" name="note" rows="4" placeholder="Escreva objetivo, conduta e próximo passo."></textarea>
+                    <button class="btn btn-primary" type="submit"><i class="bi bi-save"></i> Salvar registro</button>
+                    <div class="form-note" role="status"></div>
+                </form>
+            </aside>
+        </section>
+    </main>
+
+    <script src="https:
+    <script src="../assets/js/arca-app.js"></script>
+</body>
+</html>

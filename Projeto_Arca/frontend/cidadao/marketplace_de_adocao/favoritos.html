@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ARCA | Favoritos</title>
+    <link href="https:
+    <link href="https:
+    <link href="../../assets/css/variables.css" rel="stylesheet">
+    <link href="./marketplace.css" rel="stylesheet">
+</head>
+<body data-page="favorites">
+    <nav class="navbar navbar-expand-lg arca-nav sticky-top">
+        <div class="container-fluid px-3 px-lg-5">
+            <a class="navbar-brand arca-brand" href="./index.html" aria-label="Programa Arca">
+                <img class="arca-logo-img" src="../../assets/img/arca-logo.png" alt="Programa Arca">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="arcaNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+                    <li class="nav-item"><a class="nav-link" href="./marketplace_animais.html"><i class="bi bi-search"></i><span>Candidato</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="./favoritos.html"><i class="bi bi-heart"></i><span>Favoritos</span><span class="favorite-count badge rounded-pill">0</span></a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-soft" href="../home_cidadao.html"><i class="bi bi-person"></i><span>Tutor</span></a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-soft" href="../meus_animais/animais_cidadao.html"><i class="bi bi-house-heart"></i><span>Meus animais</span></a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-soft" href="../../login/cidadao.html"><i class="bi bi-box-arrow-in-right"></i><span>Login</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="favorites-page" data-entity="favorite_animals" data-endpoint="/api/users/{id}/favorites">
+        <div class="container-fluid px-lg-4">
+            <section class="favorites-hero">
+                <div>
+                    <span class="section-kicker">Lista salva</span>
+                    <h1>Favoritos para decidir com calma.</h1>
+                    <p>Os perfis marcados ficam guardados no navegador para comparar antes da conversa com a ONG.</p>
+                </div>
+                <a class="btn btn-primary rounded-1" href="./index.html">
+                    <i class="bi bi-search"></i>
+                    Procurar mais
+                </a>
+            </section>
+
+            <div id="favoritesGrid" class="animal-grid"></div>
+            <div id="favoritesEmpty" class="empty-state d-none">
+                <i class="bi bi-heart"></i>
+                <h2>Nenhum favorito ainda.</h2>
+                <p>Volte para a galeria e marque os animais que combinam com sua rotina.</p>
+                <a class="btn btn-primary rounded-1" href="./index.html">Abrir galeria</a>
+            </div>
+        </div>
+    </main>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="arcaToast" class="toast arca-toast" role="status" aria-live="polite" aria-atomic="true">
+            <div class="toast-body"></div>
+        </div>
+    </div>
+
+    <script src="https:
+    <script src="./marketplace.js"></script>
+</body>
+</html>

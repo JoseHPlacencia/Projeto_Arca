@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ARCA | Tutor</title>
+    <link href="https:
+    <link href="https:
+    <link href="../assets/css/variables.css" rel="stylesheet">
+    <link href="../assets/css/arca-app.css" rel="stylesheet">
+</head>
+<body class="app-page" data-page="cidadao">
+    <nav class="navbar navbar-expand-lg arca-nav sticky-top">
+        <div class="container-fluid px-3 px-lg-5">
+            <a class="arca-brand" href="../index.html" aria-label="Programa Arca">
+                <img class="arca-logo-img" src="../assets/img/arca-logo.png" alt="Programa Arca">
+            </a>
+            <span class="arca-brand-label d-none d-sm-inline">Área do tutor</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="citizenNav">
+                <div class="navbar-nav ms-auto gap-2">
+                    <a class="nav-chip" href="../../index.html"><i class="bi bi-grid-1x2"></i> Painel</a>
+                    <a class="nav-chip active" href="./home_cidadao.html"><i class="bi bi-person-heart"></i> Tutor</a>
+                    <a class="nav-chip" href="./meus_animais/animais_cidadao.html"><i class="bi bi-house-heart"></i> Meus animais</a>
+                    <a class="nav-chip" href="./carteira_digital/carteira_digital.html"><i class="bi bi-file-earmark-medical"></i> Carteira</a>
+                    <a class="nav-chip" href="./denuncias/denuncias.html"><i class="bi bi-megaphone"></i> Denúncias</a>
+                    <a class="nav-chip" href="./marketplace_de_adocao/marketplace_animais.html"><i class="bi bi-search-heart"></i> Adoção</a>
+                    <a class="nav-chip" href="./marketplace_de_adocao/favoritos.html"><i class="bi bi-heart"></i> Favoritos</a>
+                    <a class="nav-chip" href="../login/cidadao.html"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="page-shell">
+        <section class="dashboard-band mb-4" data-entity="citizen_home" data-endpoint="/api/citizen/home">
+            <div class="band-head">
+                <span class="eyebrow mb-3"><i class="bi bi-house-heart"></i> Cuidar começa pelo bairro</span>
+                <h1>Solicitações, favoritos e acompanhamento em um só lugar.</h1>
+                <p class="mt-3 mb-4">A área do tutor centraliza pedidos de orientação, castração, vacinação e interesse em adoção responsável.</p>
+                <div class="band-actions">
+                    <a class="btn btn-light" href="./meus_animais/index.html"><i class="bi bi-house-heart"></i> Meus animais</a>
+                    <a class="btn btn-light" href="./carteira_digital/index.html"><i class="bi bi-file-earmark-medical"></i> Carteira digital</a>
+                    <a class="btn btn-outline-light" href="./denuncias/index.html"><i class="bi bi-megaphone"></i> Denunciar</a>
+                    <a class="btn btn-light" href="./marketplace_de_adocao/index.html"><i class="bi bi-search"></i> Ver animais</a>
+                    <a class="btn btn-outline-light" href="./marketplace_de_adocao/favoritos.html"><i class="bi bi-bookmark-heart"></i> Meus favoritos</a>
+                </div>
+            </div>
+            <div class="metric-strip">
+                <span><strong>8</strong><small>perfis disponíveis</small></span>
+                <span><strong>6</strong><small>bairros atendidos</small></span>
+                <span><strong>6</strong><small>serviços disponíveis</small></span>
+                <span><strong>1</strong><small>lista salva localmente</small></span>
+            </div>
+        </section>
+
+        <section class="layout-grid">
+            <div class="dashboard-band">
+                <div class="module-grid">
+                    <a class="module-card" href="./meus_animais/index.html" data-record-id="tutor-pets">
+                        <span class="module-icon"><i class="bi bi-house-heart"></i></span>
+                        <span>
+                            <span class="section-kicker">Meus animais</span>
+                            <h2 class="mt-2">Cadastre seu pet antes de pedir atendimento.</h2>
+                            <p class="mb-0">Salve dados básicos e use o cadastro para agendar serviços.</p>
+                        </span>
+                        <span class="module-foot">Abrir cadastro <i class="bi bi-arrow-right"></i></span>
+                    </a>
+                    <a class="module-card" href="./carteira_digital/index.html" data-record-id="animal-wallet">
+                        <span class="module-icon"><i class="bi bi-file-earmark-medical"></i></span>
+                        <span>
+                            <span class="section-kicker">Carteira</span>
+                            <h2 class="mt-2">Histórico, vacinas e microchip em um lugar.</h2>
+                            <p class="mb-0">Registre comprovantes de atendimento, passagem por ONG e dados de saúde.</p>
+                        </span>
+                        <span class="module-foot">Abrir carteira <i class="bi bi-arrow-right"></i></span>
+                    </a>
+                    <a class="module-card" href="./denuncias/index.html" data-record-id="citizen-reports">
+                        <span class="module-icon"><i class="bi bi-megaphone"></i></span>
+                        <span>
+                            <span class="section-kicker">Denúncias</span>
+                            <h2 class="mt-2">Maus-tratos, animal perdido e resgate.</h2>
+                            <p class="mb-0">Abra um protocolo com local, descrição e anexos para acompanhamento.</p>
+                        </span>
+                        <span class="module-foot">Registrar caso <i class="bi bi-arrow-right"></i></span>
+                    </a>
+                    <a class="module-card" href="./marketplace_de_adocao/index.html" data-record-id="adoption-marketplace">
+                        <span class="module-icon"><i class="bi bi-search-heart"></i></span>
+                        <span>
+                            <span class="section-kicker">Adoção</span>
+                            <h2 class="mt-2">Encontre um perfil que combine com sua rotina.</h2>
+                            <p class="mb-0">Filtros por porte, idade, energia, bairro e cuidados.</p>
+                        </span>
+                        <span class="module-foot">Abrir galeria <i class="bi bi-arrow-right"></i></span>
+                    </a>
+                    <a class="module-card" href="./marketplace_de_adocao/favoritos.html" data-record-id="citizen-favorites">
+                        <span class="module-icon"><i class="bi bi-heart"></i></span>
+                        <span>
+                            <span class="section-kicker">Favoritos</span>
+                            <h2 class="mt-2">Compare com calma antes de chamar a ONG.</h2>
+                            <p class="mb-0">A lista fica salva no navegador para continuar a escolha depois.</p>
+                        </span>
+                        <span class="module-foot">Ver favoritos <i class="bi bi-arrow-right"></i></span>
+                    </a>
+                    <a class="module-card" href="
+                        <span class="module-icon"><i class="bi bi-calendar2-plus"></i></span>
+                        <span>
+                            <span class="section-kicker">Serviços</span>
+                            <h2 class="mt-2">Peça castração, vacina, microchip ou orientação.</h2>
+                            <p class="mb-0">Use a página de animais para agendar com o pet já selecionado.</p>
+                        </span>
+                        <span class="module-foot">Abrir pedido <i class="bi bi-arrow-right"></i></span>
+                    </a>
+                </div>
+            </div>
+
+            <aside class="soft-panel" data-arca-carousel data-autoplay="true">
+                <div class="panel-title">
+                    <div>
+                        <span class="section-kicker">Destaques</span>
+                        <h2>Perfis em destaque</h2>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button class="icon-button" type="button" data-carousel-prev aria-label="Animal anterior"><i class="bi bi-arrow-left"></i></button>
+                        <button class="icon-button" type="button" data-carousel-next aria-label="Próximo animal"><i class="bi bi-arrow-right"></i></button>
+                    </div>
+                </div>
+                <div class="carousel-stack">
+                    <article class="story-slide is-active" data-slide>
+                        <img src="https:
+                        <div class="story-copy">
+                            <span class="section-kicker">Nina · 3 km</span>
+                            <h3>Carinhosa, tranquila e pronta para visita.</h3>
+                            <a class="btn btn-primary mt-2" href="./marketplace_de_adocao/detalhes.html?id=nina"><i class="bi bi-arrow-right"></i> Ver perfil</a>
+                        </div>
+                    </article>
+                    <article class="story-slide" data-slide>
+                        <img src="https:
+                        <div class="story-copy">
+                            <span class="section-kicker">Tom · apartamento</span>
+                            <h3>Observador, silencioso e fã de janela telada.</h3>
+                            <a class="btn btn-primary mt-2" href="./marketplace_de_adocao/detalhes.html?id=tom"><i class="bi bi-arrow-right"></i> Ver perfil</a>
+                        </div>
+                    </article>
+                    <article class="story-slide" data-slide>
+                        <img src="https:
+                        <div class="story-copy">
+                            <span class="section-kicker">Luma · filhote</span>
+                            <h3>Pequena, curiosa e com castração programada.</h3>
+                            <a class="btn btn-primary mt-2" href="./marketplace_de_adocao/detalhes.html?id=luma"><i class="bi bi-arrow-right"></i> Ver perfil</a>
+                        </div>
+                    </article>
+                </div>
+                <div class="carousel-controls">
+                    <div class="carousel-dots" aria-label="Selecionar destaque">
+                        <button type="button" data-carousel-dot aria-label="Nina"></button>
+                        <button type="button" data-carousel-dot aria-label="Tom"></button>
+                        <button type="button" data-carousel-dot aria-label="Luma"></button>
+                    </div>
+                </div>
+            </aside>
+        </section>
+
+        <section id="solicitacoes" class="layout-grid mt-4">
+            <div class="tool-panel" data-filter-scope>
+                <div class="panel-title">
+                    <div>
+                        <span class="section-kicker">Solicitações</span>
+                        <h2>Acompanhe seus pedidos</h2>
+                    </div>
+                    <span class="badge-soft mint"><span data-filter-count>0</span> visíveis</span>
+                </div>
+                <div class="filter-bar">
+                    <button class="filter-pill" type="button" data-filter-button="todos">Todas</button>
+                    <button class="filter-pill" type="button" data-filter-button="aberto">Abertas</button>
+                    <button class="filter-pill" type="button" data-filter-button="agendado">Agendadas</button>
+                    <button class="filter-pill" type="button" data-filter-button="feito">Concluídas</button>
+                </div>
+                <div class="calendar-board">
+                    <article class="calendar-slot" data-filter-item data-filter-tags="aberto" data-record-id="REQ-1042">
+                        <span class="slot-time">REQ-1042</span>
+                        <div>
+                            <strong>Orientação para gato recém-resgatado</strong>
+                            <span class="d-block">Aguardando triagem da ONG parceira.</span>
+                            <div class="slot-meta"><span class="badge-soft sun">aberto</span><span class="badge-soft">chat</span></div>
+                        </div>
+                        <button class="btn btn-outline-primary" type="button" data-toggle-done><i class="bi bi-circle"></i> Marcar</button>
+                    </article>
+                    <article class="calendar-slot" data-filter-item data-filter-tags="agendado" data-record-id="REQ-1038">
+                        <span class="slot-time">REQ-1038</span>
+                        <div>
+                            <strong>Castração social</strong>
+                            <span class="d-block">Horário reservado na Clínica Norte, 14h.</span>
+                            <div class="slot-meta"><span class="badge-soft mint">agendado</span><span class="badge-soft">vacina em dia</span></div>
+                        </div>
+                        <button class="btn btn-outline-primary" type="button" data-toggle-done><i class="bi bi-circle"></i> Marcar</button>
+                    </article>
+                    <article class="calendar-slot" data-filter-item data-filter-tags="feito" data-record-id="REQ-1021">
+                        <span class="slot-time">REQ-1021</span>
+                        <div>
+                            <strong>Atualização de endereço</strong>
+                            <span class="d-block">Dados atualizados no perfil do tutor.</span>
+                            <div class="slot-meta"><span class="badge-soft">feito</span><span class="badge-soft mint">perfil</span></div>
+                        </div>
+                        <button class="btn btn-outline-primary" type="button" data-toggle-done><i class="bi bi-circle"></i> Marcar</button>
+                    </article>
+                </div>
+            </div>
+
+            <aside class="soft-panel">
+                <div class="panel-title">
+                    <div>
+                        <span class="section-kicker">Novo pedido</span>
+                        <h2>Abra uma solicitação</h2>
+                    </div>
+                </div>
+                <form class="prototype-form" id="citizenRequestForm" data-prototype-form data-entity="citizen_request" data-endpoint="/api/requests">
+                    <label class="form-label" for="requestType">Tipo de pedido</label>
+                    <select class="form-select" id="requestType" name="type" required>
+                        <option value="">Selecione</option>
+                        <option>Castração</option>
+                        <option>Vacinação</option>
+                        <option>Orientação</option>
+                        <option>Microchipagem</option>
+                        <option>Atendimento emergencial</option>
+                        <option>Atualização de cadastro</option>
+                    </select>
+                    <label class="form-label" for="requestPet">Animal</label>
+                    <input class="form-control" id="requestPet" name="pet_name" placeholder="Nome ou descrição">
+                    <label class="form-label" for="requestMessage">Resumo</label>
+                    <textarea class="form-control" id="requestMessage" name="message" rows="4" placeholder="Conte o essencial para a equipe entender o pedido."></textarea>
+                    <button class="btn btn-primary" type="submit"><i class="bi bi-send"></i> Enviar pedido</button>
+                    <div class="form-note" role="status"></div>
+                </form>
+            </aside>
+        </section>
+    </main>
+
+    <script src="https:
+    <script src="../assets/js/arca-app.js"></script>
+</body>
+</html>
