@@ -1,33 +1,32 @@
-@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700;800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
+@import url("https:
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-    --azul:    #0A2647;
-    --azul-m:  #144272;
-    --azul-v:  #2C74B3;
-    --azul-cl: #EAF4FF;
-    --verde:   #46C2A6;
-    --ouro:    #F6B84B;
-    --ink:     #071829;
-    --muted:   #5e7894;
+    --azul:    
+    --azul-m:  
+    --azul-v:  
+    --azul-cl: 
+    --verde:   
+    --ouro:    
+    --ink:     
+    --muted:   
     --line:    rgba(10, 38, 71, 0.12);
-    --bg:      #f7f9fc;
-    --white:   #ffffff;
+    --bg:      
+    --white:   
     --radius:  8px;
     --shadow:  0 2px 12px rgba(10, 38, 71, 0.08);
 
-    /* aliases HTML existente */
     --azul-prof:  var(--azul);
     --azul-med:   var(--azul-m);
     --azul-vib:   var(--azul-v);
-    --azul-ceu:   #5B9FD4;
+    --azul-ceu:   
     --azul-claro: var(--azul-cl);
     --verde-clar: rgba(70,194,166,0.12);
     --dourado:    var(--ouro);
-    --dourado-cl: #fff3d4;
+    --dourado-cl: 
     --cinza:      var(--muted);
-    --cinza-clar: #f0f4f8;
+    --cinza-clar: 
     --texto:      var(--ink);
     --bg-main:    var(--bg);
     --shadow-sm:  var(--shadow);
@@ -49,7 +48,6 @@ body {
     line-height: 1.65;
 }
 
-/* Partículas — desativadas para design limpo */
 .bg-particles { display: none; }
 
 header {
@@ -143,9 +141,8 @@ nav.scrolled { box-shadow: 0 2px 16px rgba(10,38,71,0.3); }
     text-transform: uppercase;
     transition: all 0.2s;
 }
-.hero-cta:hover { background: #38b396; transform: translateY(-1px); }
+.hero-cta:hover { background: 
 
-/* WAVE */
 .wave-divider { line-height: 0; }
 .wave-divider svg { display: block; width: 100%; }
 
@@ -288,7 +285,7 @@ main { position: relative; z-index: 1; }
 .quem-badge {
     display: inline-flex; align-items: center; gap: 0.4rem;
     background: rgba(70,194,166,0.12);
-    color: #0c5b4d;
+    color: 
     font-size: 0.68rem;
     font-weight: 800;
     letter-spacing: 0.1em;
@@ -308,7 +305,7 @@ main { position: relative; z-index: 1; }
 }
 .quem-text p {
     font-size: 0.95rem;
-    color: #334155;
+    color: 
     line-height: 1.85;
     margin-bottom: 1rem;
 }
@@ -501,7 +498,7 @@ main { position: relative; z-index: 1; }
     border-radius: var(--radius);
     background: rgba(255,255,255,0.08);
     display: flex; align-items: center; justify-content: center;
-    color: #5B9FD4;
+    color: 
 }
 .cta-opcoes li > div:last-child { display: flex; flex-direction: column; gap: 0.25rem; }
 .cta-opcoes strong { display: block; color: white; font-size: 0.88rem; font-weight: 800; }

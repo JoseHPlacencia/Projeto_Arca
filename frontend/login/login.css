@@ -1,21 +1,21 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-    --color-primary-dark: #0A2647;
-    --color-primary-base: #144272;
-    --color-bg-light: #EAF4FF;
-    --color-accent-main: #2C74B3;
-    --color-accent-dark: #205295;
-    --text-body: #144272;
-    --cinza: #475569;
-    --cinza-clar: #F1F5F9;
-    --white: #FFFFFF;
+    --color-primary-dark: 
+    --color-primary-base: 
+    --color-bg-light: 
+    --color-accent-main: 
+    --color-accent-dark: 
+    --text-body: 
+    --cinza: 
+    --cinza-clar: 
+    --white: 
     --shadow-sm: 0 2px 8px rgba(10, 38, 71, 0.05);
     --shadow-md: 0 10px 30px rgba(10, 38, 71, 0.08);
     --radius-sm: 12px;
     --radius-md: 18px;
     --cor-perfil: var(--color-accent-main);
-    --cor-perfil-clar: #DBEAFE;
+    --cor-perfil-clar: 
 }
 
 html { scroll-behavior: smooth; }
@@ -175,7 +175,7 @@ input:focus, select:focus, textarea:focus {
     box-shadow: 0 0 0 4px var(--cor-perfil-clar);
 }
 
-input::placeholder, textarea::placeholder { color: #94a3b8; }
+input::placeholder, textarea::placeholder { color: 
 
 textarea {
     resize: vertical;
@@ -200,14 +200,14 @@ textarea {
 
 .field-error {
     font-size: 0.75rem;
-    color: #dc2626;
+    color: 
     margin-top: 0.35rem;
     display: none;
 }
 
 .form-group.error input {
-    border-color: #dc2626;
-    background: #fef2f2;
+    border-color: 
+    background: 
 }
 
 .form-group.error .field-error { display: block; }
@@ -358,17 +358,17 @@ textarea {
 
 body.perfil-cidadao {
     --cor-perfil: var(--color-accent-main);
-    --cor-perfil-clar: #DBEAFE;
+    --cor-perfil-clar: 
 }
 
 body.perfil-ong {
     --cor-perfil: var(--color-primary-base);
-    --cor-perfil-clar: #D1E1F0;
+    --cor-perfil-clar: 
 }
 
 body.perfil-prefeitura {
     --cor-perfil: var(--color-primary-dark);
-    --cor-perfil-clar: #D6E4F0;
+    --cor-perfil-clar: 
 }
 
 @media (max-width: 600px) {

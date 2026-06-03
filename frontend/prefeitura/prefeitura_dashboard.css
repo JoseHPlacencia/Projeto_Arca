@@ -1,16 +1,16 @@
-/* Atualização de fontes para um estilo mais formal */
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
+
+@import url("https:
 
 :root {
-    /* Mantenha suas variáveis de cor anteriores aqui */
-    --arca-prussian: #0A2647;
-    --arca-yale: #144272;
-    --arca-dusk: #205295;
-    --arca-cerulean: #2C74B3;
-    --arca-alice: #EAF4FF;
-    --arca-white: #ffffff;
-    --arca-ink: #071829;
-    --arca-muted: #5e7894;
+
+    --arca-prussian: 
+    --arca-yale: 
+    --arca-dusk: 
+    --arca-cerulean: 
+    --arca-alice: 
+    --arca-white: 
+    --arca-ink: 
+    --arca-muted: 
     --arca-line: rgba(10, 38, 71, 0.14);
     --arca-shadow: 0 14px 34px rgba(10, 38, 71, 0.08);
     --arca-radius: 8px;
@@ -18,7 +18,7 @@
 }
 
 body {
-    /* Fonte Lato: Elegante e profissional para leitura */
+
     font-family: "Lato", sans-serif;
     background: linear-gradient(135deg, rgba(234, 244, 255, .96), rgba(255, 255, 255, .88) 42%, rgba(234, 244, 255, .7)), repeating-linear-gradient(90deg, rgba(10, 38, 71, .04) 0, rgba(10, 38, 71, .04) 1px, transparent 1px, transparent 78px);
     color: var(--arca-ink);
@@ -26,7 +26,6 @@ body {
     min-height: 100vh;
 }
 
-/* Fonte Libre Baskerville: Serifada clássica para autoridade institucional */
 h1, h2, h3, .topbar-title, .metric-num, .table-title, .modal-title, .empty-state h4 {
     font-family: "Libre Baskerville", serif;
     letter-spacing: 0;
@@ -213,7 +212,7 @@ a { color: inherit; text-decoration: none; }
 .metric-label { font-size: 0.8rem; color: var(--arca-muted); font-weight: 700; }
 
 .metric-delta { font-size: 0.75rem; font-weight: 800; margin-top: 0.4rem; }
-.metric-delta.up { color: #0c5b4d; }
+.metric-delta.up { color: 
 .metric-delta.down { color: var(--arca-coral); }
 
 .table-card {
@@ -287,13 +286,13 @@ tbody strong { color: var(--arca-prussian); font-weight: 700; }
 
 .badge-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; }
 
-.badge-status.ativo   { background: rgba(70, 194, 166, 0.16); color: #0c5b4d; border-color: rgba(70, 194, 166, 0.32); }
+.badge-status.ativo   { background: rgba(70, 194, 166, 0.16); color: 
 .badge-status.ativo::before { background: var(--arca-mint); }
 
-.badge-status.pendente { background: rgba(246, 184, 75, 0.18); color: #704500; border-color: rgba(246, 184, 75, 0.32); }
+.badge-status.pendente { background: rgba(246, 184, 75, 0.18); color: 
 .badge-status.pendente::before { background: var(--arca-sun); }
 
-.badge-status.inativo { background: rgba(242, 111, 94, 0.14); color: #8a291d; border-color: rgba(242, 111, 94, 0.32); }
+.badge-status.inativo { background: rgba(242, 111, 94, 0.14); color: 
 .badge-status.inativo::before { background: var(--arca-coral); }
 
 .badge-status.analise { background: var(--arca-alice); color: var(--arca-dusk); border-color: rgba(32, 82, 149, 0.18); }
@@ -388,7 +387,7 @@ tbody strong { color: var(--arca-prussian); font-weight: 700; }
     display: flex; align-items: center; justify-content: center;
     color: var(--arca-prussian); transition: all 0.2s;
 }
-.modal-close:hover { background: rgba(242, 111, 94, .14); color: #8a291d; border-color: rgba(242, 111, 94, .34); }
+.modal-close:hover { background: rgba(242, 111, 94, .14); color: 
 
 .form-group { margin-bottom: 1.1rem; }
 .form-group label {

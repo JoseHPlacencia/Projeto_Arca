@@ -32,7 +32,7 @@ function medirSenha(val) {
     if (/[A-Z]/.test(val)) score++;
     if (/[0-9]/.test(val)) score++;
     if (/[^a-zA-Z0-9]/.test(val)) score++;
-    const colors = ['', '#dc2626', '#f59e0b', '#2C74B3', '#144272'];
+    const colors = ['', '
     const labels = ['', 'Fraca', 'Regular', 'Boa', 'Forte'];
     bars.forEach((b, i) => b.style.background = i < score ? colors[score] : '');
     label.textContent = val.length ? labels[score] : '';
@@ -42,9 +42,8 @@ function medirSenha(val) {
 function handleLogin() {
     const usuarioInput = document.getElementById('login-cpf').value.trim();
     const senhaInput = document.getElementById('login-senha').value.trim();
-    const btn = document.querySelector('#panel-login .btn-submit');
+    const btn = document.querySelector('
 
-    // Validação de credenciais: cidaão / 123456
     if ((usuarioInput === 'cidaão' || usuarioInput === 'tutor') && senhaInput === '123456') {
         btn.disabled = true;
         btn.innerHTML = 'Entrando...';
@@ -59,7 +58,7 @@ function handleLogin() {
 }
 
 function handleCadastro() {
-    const btn = document.querySelector('#panel-cadastro .btn-submit');
+    const btn = document.querySelector('
     btn.disabled = true;
     btn.innerHTML = 'Criando conta...';
     setTimeout(() => {

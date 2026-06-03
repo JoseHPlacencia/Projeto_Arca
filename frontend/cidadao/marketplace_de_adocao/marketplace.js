@@ -1,5 +1,5 @@
-const DOG_VIDEO = "https://huggingface.co/datasets/Lightricks/Squish-Dataset/resolve/main/videos/dog.mp4";
-const CAT_VIDEO = "https://upload.wikimedia.org/wikipedia/commons/transcoded/f/f7/Cat-on-bed.webm/Cat-on-bed.webm.480p.vp9.webm";
+const DOG_VIDEO = "https:
+const CAT_VIDEO = "https:
 
 const animals = [
     {
@@ -32,9 +32,9 @@ const animals = [
             ["Maio", "Liberada para visitas com adotantes."]
         ],
         images: [
-            "https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=1200&q=82",
-            "https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=1200&q=82",
-            "https://images.unsplash.com/photo-1561037404-61cd46aa615b?auto=format&fit=crop&w=1200&q=82"
+            "https:
+            "https:
+            "https:
         ],
         video: { src: DOG_VIDEO, type: "video/mp4" }
     },
@@ -68,9 +68,9 @@ const animals = [
             ["Maio", "Socialização concluída."]
         ],
         images: [
-            "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1200&q=82",
-            "https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&fit=crop&w=1200&q=82",
-            "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&w=1200&q=82"
+            "https:
+            "https:
+            "https:
         ],
         video: { src: CAT_VIDEO, type: "video/webm" }
     },
@@ -104,9 +104,9 @@ const animals = [
             ["Junho", "Previsão de castração."]
         ],
         images: [
-            "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&w=1200&q=82",
-            "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1200&q=82",
-            "https://images.unsplash.com/photo-1560807707-8cc77767d783?auto=format&fit=crop&w=1200&q=82"
+            "https:
+            "https:
+            "https:
         ],
         video: { src: DOG_VIDEO, type: "video/mp4" }
     },
@@ -140,9 +140,9 @@ const animals = [
             ["Maio", "Liberada para adoção responsável."]
         ],
         images: [
-            "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=1200&q=82",
-            "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=1200&q=82",
-            "https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=1200&q=82"
+            "https:
+            "https:
+            "https:
         ],
         video: { src: CAT_VIDEO, type: "video/webm" }
     },
@@ -176,9 +176,9 @@ const animals = [
             ["Maio", "Disponível para entrevistas."]
         ],
         images: [
-            "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=1200&q=82",
-            "https://images.unsplash.com/photo-1568572933382-74d440642117?auto=format&fit=crop&w=1200&q=82",
-            "https://images.unsplash.com/photo-1507146426996-ef05306b995a?auto=format&fit=crop&w=1200&q=82"
+            "https:
+            "https:
+            "https:
         ],
         video: { src: DOG_VIDEO, type: "video/mp4" }
     },
@@ -212,9 +212,9 @@ const animals = [
             ["Junho", "Retorno veterinário agendado."]
         ],
         images: [
-            "https://images.unsplash.com/photo-1618826411640-d6df44dd3f7a?auto=format&fit=crop&w=1200&q=82",
-            "https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?auto=format&fit=crop&w=1200&q=82",
-            "https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?auto=format&fit=crop&w=1200&q=82"
+            "https:
+            "https:
+            "https:
         ],
         video: { src: CAT_VIDEO, type: "video/webm" }
     },
@@ -248,9 +248,9 @@ const animals = [
             ["Maio", "Procura adoção especial."]
         ],
         images: [
-            "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=1200&q=82",
-            "https://images.unsplash.com/photo-1546238232-20216dec9f72?auto=format&fit=crop&w=1200&q=82",
-            "https://images.unsplash.com/photo-1504595403659-9088ce801e29?auto=format&fit=crop&w=1200&q=82"
+            "https:
+            "https:
+            "https:
         ],
         video: { src: DOG_VIDEO, type: "video/mp4" }
     },
@@ -284,9 +284,9 @@ const animals = [
             ["Maio", "Perfil aprovado para adoção."]
         ],
         images: [
-            "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?auto=format&fit=crop&w=1200&q=82",
-            "https://images.unsplash.com/photo-1543852786-1cf6624b9987?auto=format&fit=crop&w=1200&q=82",
-            "https://images.unsplash.com/photo-1533743983669-94fa5c4338ec?auto=format&fit=crop&w=1200&q=82"
+            "https:
+            "https:
+            "https:
         ],
         video: { src: CAT_VIDEO, type: "video/webm" }
     }
@@ -345,7 +345,7 @@ function toggleFavorite(id) {
         renderFavorites();
     }
 
-    if (page === "marketplace" && qs("#favoritesOnly")?.classList.contains("active")) {
+    if (page === "marketplace" && qs("
         renderMarketplace();
     }
 }
@@ -356,14 +356,14 @@ function updateFavoriteCount() {
         item.textContent = total;
     });
 
-    const statFavorites = qs("#statFavorites");
+    const statFavorites = qs("
     if (statFavorites) {
         statFavorites.textContent = total;
     }
 }
 
 function showToast(message) {
-    const toastEl = qs("#arcaToast");
+    const toastEl = qs("
     if (!toastEl || !window.bootstrap) return;
     qs(".toast-body", toastEl).textContent = message;
     bootstrap.Toast.getOrCreateInstance(toastEl, { delay: 1800 }).show();
@@ -432,20 +432,20 @@ function selectedCheckboxValues(group) {
 
 function readFilters() {
     return {
-        search: qs("#searchInput")?.value.trim().toLowerCase() || "",
-        type: qs("#typeFilter")?.value || "todos",
+        search: qs("
+        type: qs("
         ages: selectedCheckboxValues("age"),
         sizes: selectedCheckboxValues("size"),
-        sex: qs("#sexFilter")?.value || "todos",
-        energy: qs("#energyFilter")?.value || "todos",
-        neighborhood: qs("#neighborhoodFilter")?.value || "todos",
-        distance: Number(qs("#distanceFilter")?.value || 24),
-        vaccinated: qs("#vaccinatedFilter")?.checked || false,
-        castrated: qs("#castratedFilter")?.checked || false,
-        apartment: qs("#apartmentFilter")?.checked || false,
-        kids: qs("#kidsFilter")?.checked || false,
-        sort: qs("#sortFilter")?.value || "match",
-        favoritesOnly: qs("#favoritesOnly")?.classList.contains("active") || false
+        sex: qs("
+        energy: qs("
+        neighborhood: qs("
+        distance: Number(qs("
+        vaccinated: qs("
+        castrated: qs("
+        apartment: qs("
+        kids: qs("
+        sort: qs("
+        favoritesOnly: qs("
     };
 }
 
@@ -477,7 +477,7 @@ function filterAnimals(filters) {
 }
 
 function renderActiveFilters(filters) {
-    const container = qs("#activeFilters");
+    const container = qs("
     if (!container) return;
 
     const pills = [];
@@ -499,29 +499,29 @@ function renderActiveFilters(filters) {
 }
 
 function renderMarketplace() {
-    const grid = qs("#animalsGrid");
+    const grid = qs("
     if (!grid) return;
 
     const filters = readFilters();
     const filtered = filterAnimals(filters);
     grid.innerHTML = filtered.map(animalCard).join("");
 
-    qs("#resultCount").textContent = filtered.length;
-    qs("#distanceValue").textContent = filters.distance;
-    qs("#emptyState").classList.toggle("d-none", filtered.length > 0);
+    qs("
+    qs("
+    qs("
     renderActiveFilters(filters);
     bindCardActions(grid);
 }
 
 function populateMarketplace() {
     const neighborhoods = uniqueValues("neighborhood");
-    const select = qs("#neighborhoodFilter");
+    const select = qs("
     if (select) {
         select.insertAdjacentHTML("beforeend", neighborhoods.map((name) => `<option value="${name}">${name}</option>`).join(""));
     }
 
     const onInput = () => renderMarketplace();
-    ["#searchInput", "#typeFilter", "#sexFilter", "#energyFilter", "#neighborhoodFilter", "#distanceFilter", "#sortFilter"].forEach((selector) => {
+    ["
         qs(selector)?.addEventListener("input", onInput);
     });
 
@@ -529,12 +529,12 @@ function populateMarketplace() {
         input.addEventListener("change", onInput);
     });
 
-    qs("#favoritesOnly")?.addEventListener("click", (event) => {
+    qs("
         event.currentTarget.classList.toggle("active");
         renderMarketplace();
     });
 
-    qsa("#resetFilters, [data-reset-filters]").forEach((button) => {
+    qsa("
         button.addEventListener("click", resetFilters);
     });
 
@@ -543,28 +543,28 @@ function populateMarketplace() {
 }
 
 function resetFilters() {
-    qs("#filterForm")?.reset();
-    qs("#favoritesOnly")?.classList.remove("active");
-    qs("#distanceFilter").value = 24;
+    qs("
+    qs("
+    qs("
     renderMarketplace();
 }
 
 function renderStats() {
     const ongs = new Set(animals.map((animal) => animal.ong));
 
-    if (qs("#statAnimals")) qs("#statAnimals").textContent = animals.length;
-    if (qs("#statOngs")) qs("#statOngs").textContent = ongs.size;
-    if (qs("#apartmentCount")) qs("#apartmentCount").textContent = animals.filter((animal) => animal.apartment).length;
+    if (qs("
+    if (qs("
+    if (qs("
 }
 
 function renderFavorites() {
-    const grid = qs("#favoritesGrid");
+    const grid = qs("
     if (!grid) return;
 
     const favorites = getFavorites();
     const favoriteAnimals = animals.filter((animal) => favorites.includes(animal.id));
     grid.innerHTML = favoriteAnimals.map(animalCard).join("");
-    qs("#favoritesEmpty").classList.toggle("d-none", favoriteAnimals.length > 0);
+    qs("
     bindCardActions(grid);
 }
 
@@ -576,7 +576,7 @@ function detailTemplate(animal) {
         </div>
     `).join("");
     const galleryIndicators = animal.images.map((_, index) => `
-        <button type="button" data-bs-target="#${galleryId}" data-bs-slide-to="${index}" class="${index === 0 ? "active" : ""}" aria-label="Foto ${index + 1}" ${index === 0 ? 'aria-current="true"' : ""}></button>
+        <button type="button" data-bs-target="
     `).join("");
 
     const facts = [
@@ -631,10 +631,10 @@ function detailTemplate(animal) {
                 <div id="${galleryId}" class="carousel slide" data-bs-ride="false">
                     <div class="carousel-indicators">${galleryIndicators}</div>
                     <div class="carousel-inner">${gallerySlides}</div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#${galleryId}" data-bs-slide="prev" aria-label="Foto anterior">
+                    <button class="carousel-control-prev" type="button" data-bs-target="
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#${galleryId}" data-bs-slide="next" aria-label="Próxima foto">
+                    <button class="carousel-control-next" type="button" data-bs-target="
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     </button>
                 </div>
@@ -665,7 +665,7 @@ function detailTemplate(animal) {
                 </div>
 
                 <div class="detail-actions">
-                    <button class="btn btn-primary rounded-1" type="button" data-bs-toggle="modal" data-bs-target="#adoptionModal">
+                    <button class="btn btn-primary rounded-1" type="button" data-bs-toggle="modal" data-bs-target="
                         <i class="bi bi-send"></i>
                         Conversar sobre ${animal.name}
                     </button>
@@ -758,7 +758,7 @@ function detailTemplate(animal) {
 }
 
 function renderDetail() {
-    const root = qs("#detailContent");
+    const root = qs("
     if (!root) return;
 
     const params = new URLSearchParams(window.location.search);
@@ -778,13 +778,13 @@ function renderDetail() {
     }
 
     document.title = `ARCA | ${animal.name}`;
-    qs("#adoptionModalLabel").textContent = `Quero adotar ${animal.name}`;
+    qs("
     root.innerHTML = detailTemplate(animal);
     bindCardActions(root);
 
-    qs("#adoptionForm")?.addEventListener("submit", (event) => {
+    qs("
         event.preventDefault();
-        qs("#adoptionFeedback").classList.remove("d-none");
+        qs("
         showToast(`Solicitação para ${animal.name} registrada.`);
     });
 }

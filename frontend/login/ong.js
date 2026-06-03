@@ -24,9 +24,8 @@ function mascaraCNPJ(el) {
 function handleLogin() {
     const usuarioInput = document.getElementById('login-cnpj').value.trim();
     const senhaInput = document.getElementById('login-senha').value.trim();
-    const btn = document.querySelector('#panel-login .btn-submit');
+    const btn = document.querySelector('
 
-    // Validação de credenciais: Ong / ong$-135
     if (usuarioInput === 'Ong' && senhaInput === 'ong$-135') {
         btn.disabled = true;
         btn.textContent = 'Verificando acesso...';
@@ -41,7 +40,7 @@ function handleLogin() {
 }
 
 function handleCadastro() {
-    const btn = document.querySelector('#panel-cadastro .btn-submit');
+    const btn = document.querySelector('
     btn.disabled = true;
     btn.textContent = 'Enviando...';
     setTimeout(() => { 

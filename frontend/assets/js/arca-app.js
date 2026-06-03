@@ -213,8 +213,8 @@ function initLogin() {
     if (!form) return;
 
     const feedback = qs("[data-login-feedback]");
-    const userInput = qs("#loginUser", form);
-    const passwordInput = qs("#loginPassword", form);
+    const userInput = qs("
+    const passwordInput = qs("
 
     qsa("[data-login-demo]").forEach((button) => {
         button.addEventListener("click", () => {
@@ -469,14 +469,14 @@ function escapeHtml(value) {
         "<": "&lt;",
         ">": "&gt;",
         '"': "&quot;",
-        "'": "&#039;"
+        "'": "&
     }[char]));
 }
 
 function initInventoryCrud() {
     const scope = qs("[data-inventory-crud]");
     const form = qs("[data-inventory-form]");
-    const list = qs("#stockList");
+    const list = qs("
     if (!scope || !form || !list) return;
 
     const storageKey = scope.dataset.storageKey || "arcaInventoryItems";
@@ -718,9 +718,9 @@ function formatPetDate(value) {
 function initTutorPets() {
     const petForm = qs("[data-pet-form]");
     const scheduleForm = qs("[data-pet-schedule-form]");
-    const petList = qs("#tutorPetList");
-    const scheduleList = qs("#petScheduleList");
-    const petSelect = qs("#schedulePet");
+    const petList = qs("
+    const scheduleList = qs("
+    const petSelect = qs("
     if (!petForm || !scheduleForm || !petList || !scheduleList || !petSelect) return;
 
     const petSubmitLabel = qs("[data-pet-submit-label]", petForm);
@@ -849,7 +849,7 @@ function initTutorPets() {
             button.addEventListener("click", () => {
                 petSelect.value = button.dataset.petSchedule;
                 scheduleForm.scrollIntoView({ behavior: "smooth", block: "center" });
-                qs("#scheduleService", scheduleForm)?.focus();
+                qs("
             });
         });
     };
@@ -1076,7 +1076,7 @@ function formatDateTime(value) {
 
 function initReports() {
     const form = qs("[data-report-form]");
-    const list = qs("#reportList");
+    const list = qs("
     const scope = qs("[data-report-scope]");
     if (!form || !list || !scope) return;
 
@@ -1318,11 +1318,11 @@ function formatPetRecordDate(value) {
 
 function initWallet() {
     const scope = qs("[data-wallet]");
-    const petSelect = qs("#walletPetSelect");
-    const formPetSelect = qs("#walletPet");
+    const petSelect = qs("
+    const formPetSelect = qs("
     const form = qs("[data-wallet-form]");
-    const petCard = qs("#walletPetCard");
-    const timeline = qs("#walletTimeline");
+    const petCard = qs("
+    const timeline = qs("
     if (!scope || !petSelect || !formPetSelect || !form || !petCard || !timeline) return;
 
     const queryPet = new URLSearchParams(window.location.search).get("pet");
