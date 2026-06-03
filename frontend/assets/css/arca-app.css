@@ -1,4 +1,4 @@
-@import url("https:
+@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700;800&family=Fraunces:opsz,wght@9..144,650;9..144,800;9..144,900&display=swap");
 
 * {
     box-sizing: border-box;
@@ -32,7 +32,7 @@ a {
 }
 
 .arca-nav {
-    --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http:
+    --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28234, 244, 255, 0.96%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M5 8h20M5 15h20M5 22h20'/%3e%3c/svg%3e");
     min-height: 88px;
     border-bottom: 1px solid rgba(234, 244, 255, .18);
     background: linear-gradient(90deg, var(--arca-prussian), var(--arca-yale));
@@ -210,7 +210,7 @@ a {
     padding: clamp(24px, 4vw, 46px);
     background:
         linear-gradient(135deg, rgba(10, 38, 71, .98), rgba(20, 66, 114, .96) 54%, rgba(32, 82, 149, .94)),
-        url("https:
+        url("https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?auto=format&fit=crop&w=1500&q=80") center/cover;
     background-blend-mode: multiply;
 }
 
@@ -548,23 +548,23 @@ a {
     gap: 6px;
     padding: 5px 9px;
     color: var(--arca-prussian);
-    background: 
+    background: #f4f9ff;
     font-size: .82rem;
     font-weight: 800;
 }
 
 .badge-soft.sun {
-    color: 
+    color: #704500;
     background: rgba(246, 184, 75, .18);
 }
 
 .badge-soft.mint {
-    color: 
+    color: #0c5b4d;
     background: rgba(70, 194, 166, .16);
 }
 
 .badge-soft.coral {
-    color: 
+    color: #8a291d;
     background: rgba(242, 111, 94, .14);
 }
 
@@ -689,7 +689,7 @@ a {
     border: 1px solid rgba(70, 194, 166, .32);
     border-radius: 6px;
     padding: 10px 12px;
-    color: 
+    color: #0c5b4d;
     background: rgba(70, 194, 166, .12);
     font-weight: 800;
 }
@@ -750,7 +750,7 @@ a {
     color: var(--arca-white);
     background:
         linear-gradient(145deg, rgba(10, 38, 71, .96), rgba(20, 66, 114, .92)),
-        url("https:
+        url("https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?auto=format&fit=crop&w=1200&q=80") center/cover;
 }
 
 .login-aside-inner {
@@ -806,13 +806,13 @@ a {
 
 .login-feedback.is-error {
     border: 1px solid rgba(242, 111, 94, .34);
-    color: 
+    color: #8a291d;
     background: rgba(242, 111, 94, .14);
 }
 
 .login-feedback.is-success {
     border: 1px solid rgba(70, 194, 166, .34);
-    color: 
+    color: #0c5b4d;
     background: rgba(70, 194, 166, .14);
 }
 

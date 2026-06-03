@@ -13,10 +13,11 @@ function toggleSenha(id, btn) {
 }
 
 function handleLogin() {
-    const usuarioInput = document.querySelector('
+    const usuarioInput = document.querySelector('#panel-login input[type="text"]').value.trim();
     const senhaInput = document.getElementById('login-senha').value.trim();
-    const btn = document.querySelector('
+    const btn = document.querySelector('#panel-login .btn-submit');
 
+    // Validação de credenciais: prefeitura / pref@456
     if (usuarioInput === 'prefeitura' && senhaInput === 'pref@456') {
         btn.disabled = true;
         btn.textContent = 'Verificando credenciais...';
@@ -31,7 +32,7 @@ function handleLogin() {
 }
 
 function handleCadastro() {
-    const btn = document.querySelector('
+    const btn = document.querySelector('#panel-cadastro .btn-submit');
     btn.disabled = true;
     btn.textContent = 'Enviando...';
     setTimeout(() => { 

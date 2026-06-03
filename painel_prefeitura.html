@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https:
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,900;1,9..144,300;1,9..144,600&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
     <title>Painel Prefeitura — Programa Arca</title>
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --azul-prof: 
-            --azul-med:  
-            --azul-vib:  
-            --azul-ceu:  
-            --azul-claro:
-            --verde:     
-            --verde-clar:
-            --dourado:   
-            --dourado-cl:
-            --branco:    
-            --cinza:     
-            --cinza-clar:
-            --texto:     
-            --bg-main:   
+            --azul-prof: #0a2540;
+            --azul-med:  #1a4a7a;
+            --azul-vib:  #1e6fc4;
+            --azul-ceu:  #3b9edd;
+            --azul-claro:#e8f4fd;
+            --verde:     #1ca97a;
+            --verde-clar:#e3f7f0;
+            --dourado:   #f0a500;
+            --dourado-cl:#fff3d4;
+            --branco:    #f8fafc;
+            --cinza:     #64748b;
+            --cinza-clar:#f1f5f9;
+            --texto:     #0f172a;
+            --bg-main:   #f0f7ff;
             --shadow-sm: 0 2px 12px rgba(10,37,64,0.08);
             --shadow-md: 0 8px 32px rgba(10,37,64,0.13);
             --radius-sm: 12px;
@@ -36,9 +36,10 @@
             display: flex; min-height: 100vh;
         }
 
+        /* ===== SIDEBAR ===== */
         .sidebar {
             width: var(--sidebar-w);
-            background: linear-gradient(180deg, var(--azul-prof) 0%, 
+            background: linear-gradient(180deg, var(--azul-prof) 0%, #0e2d50 100%);
             display: flex; flex-direction: column;
             position: fixed; top: 0; left: 0; bottom: 0;
             z-index: 100; overflow-y: auto;
@@ -102,11 +103,13 @@
         }
         .sidebar-logout:hover { color: rgba(255,255,255,0.8); }
 
+        /* ===== MAIN ===== */
         .main {
             margin-left: var(--sidebar-w);
             flex: 1; display: flex; flex-direction: column; min-height: 100vh;
         }
 
+        /* TOPBAR */
         .topbar {
             background: white;
             border-bottom: 1px solid rgba(30,111,196,0.08);
@@ -144,12 +147,15 @@
             background: var(--verde); border: 2px solid white;
         }
 
+        /* CONTENT */
         .content { padding: 2rem; flex: 1; }
 
+        /* PANELS (seções) */
         .panel { display: none; }
         .panel.active { display: block; animation: fadeIn 0.3s ease; }
         @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
 
+        /* ===== CARDS DE MÉTRICAS ===== */
         .metrics-grid {
             display: grid; grid-template-columns: repeat(4, 1fr);
             gap: 1.2rem; margin-bottom: 2rem;
@@ -180,8 +186,8 @@
         }
         .metric-icon.blue  { background: var(--azul-claro); color: var(--azul-vib); }
         .metric-icon.green { background: var(--verde-clar); color: var(--verde); }
-        .metric-icon.gold  { background: var(--dourado-cl); color: 
-        .metric-icon.teal  { background: 
+        .metric-icon.gold  { background: var(--dourado-cl); color: #a06a00; }
+        .metric-icon.teal  { background: #ddf0fb; color: var(--azul-ceu); }
 
         .metric-num {
             font-family: 'Fraunces', serif;
@@ -194,8 +200,9 @@
             font-size: 0.75rem; font-weight: 700; margin-top: 0.4rem;
         }
         .metric-delta.up { color: var(--verde); }
-        .metric-delta.down { color: 
+        .metric-delta.down { color: #dc2626; }
 
+        /* ===== TABELA ===== */
         .table-card {
             background: white; border-radius: var(--radius-md);
             box-shadow: var(--shadow-sm);
@@ -239,7 +246,7 @@
             border-bottom: 1px solid rgba(30,111,196,0.04);
         }
         tbody tr:last-child td { border-bottom: none; }
-        tbody tr:hover td { background: 
+        tbody tr:hover td { background: #fafcff; }
 
         .badge-status {
             display: inline-flex; align-items: center; gap: 0.35rem;
@@ -249,15 +256,16 @@
         .badge-status::before {
             content: ''; width: 6px; height: 6px; border-radius: 50%;
         }
-        .badge-status.ativo   { background: var(--verde-clar); color: 
+        .badge-status.ativo   { background: var(--verde-clar); color: #0d7a56; }
         .badge-status.ativo::before { background: var(--verde); }
-        .badge-status.pendente { background: var(--dourado-cl); color: 
+        .badge-status.pendente { background: var(--dourado-cl); color: #8a5a00; }
         .badge-status.pendente::before { background: var(--dourado); }
-        .badge-status.inativo { background: 
-        .badge-status.inativo::before { background: 
+        .badge-status.inativo { background: #fee2e2; color: #dc2626; }
+        .badge-status.inativo::before { background: #dc2626; }
         .badge-status.analise { background: var(--azul-claro); color: var(--azul-vib); }
         .badge-status.analise::before { background: var(--azul-vib); }
 
+        /* AÇÃO RÁPIDA */
         .action-grid {
             display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
             margin-bottom: 2rem;
@@ -278,6 +286,7 @@
         .action-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--azul-prof); }
         .action-card p  { font-size: 0.8rem; color: var(--cinza); line-height: 1.5; }
 
+        /* TIMELINE ATIVIDADES */
         .timeline { display: flex; flex-direction: column; gap: 0; }
         .timeline-item {
             display: flex; gap: 1rem; padding: 1rem 1.5rem;
@@ -291,10 +300,11 @@
         .timeline-dot.verde  { background: var(--verde); }
         .timeline-dot.azul   { background: var(--azul-vib); }
         .timeline-dot.ouro   { background: var(--dourado); }
-        .timeline-text { font-size: 0.87rem; color: 
+        .timeline-text { font-size: 0.87rem; color: #334155; line-height: 1.55; }
         .timeline-text strong { color: var(--azul-prof); font-weight: 700; }
         .timeline-time { margin-left: auto; font-size: 0.75rem; color: var(--cinza); flex-shrink: 0; }
 
+        /* SECTION HEADER */
         .section-page-header { margin-bottom: 1.8rem; }
         .section-page-header .label {
             font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em;
@@ -308,6 +318,7 @@
         .section-page-header h2 em { font-style: italic; color: var(--azul-vib); }
         .section-page-header p { font-size: 0.9rem; color: var(--cinza); margin-top: 0.3rem; }
 
+        /* FORM MODAL */
         .modal-overlay {
             position: fixed; inset: 0;
             background: rgba(10,37,64,0.5);
@@ -339,7 +350,7 @@
             display: flex; align-items: center; justify-content: center;
             color: var(--cinza); transition: all 0.2s;
         }
-        .modal-close:hover { background: 
+        .modal-close:hover { background: #fee2e2; color: #dc2626; }
         .form-group { margin-bottom: 1.1rem; }
         .form-group label {
             display: block; font-size: 0.78rem; font-weight: 800;
@@ -376,6 +387,7 @@
         }
         .btn-modal.primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(30,111,196,0.35); }
 
+        /* ALERT TOAST */
         .toast {
             position: fixed; bottom: 2rem; right: 2rem; z-index: 300;
             background: var(--azul-prof); color: white;
@@ -389,8 +401,10 @@
         .toast.show { transform: translateY(0); opacity: 1; }
         .toast svg { color: var(--verde); }
 
+        /* GRID 2-col */
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.5rem; }
 
+        /* EMPTY STATE */
         .empty-state {
             text-align: center; padding: 3rem;
             color: var(--cinza);
@@ -398,6 +412,7 @@
         .empty-state svg { color: rgba(30,111,196,0.3); margin-bottom: 1rem; }
         .empty-state h4 { font-family:'Fraunces',serif; font-size:1.1rem; color:var(--azul-prof); margin-bottom:0.4rem; }
 
+        /* RESPONSIVE */
         @media (max-width: 1100px) {
             .metrics-grid { grid-template-columns: repeat(2,1fr); }
             .action-grid { grid-template-columns: repeat(2,1fr); }
@@ -414,6 +429,7 @@
 </head>
 <body>
 
+<!-- ===== SIDEBAR ===== -->
 <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
         <a href="./index.html" class="sidebar-brand">
@@ -428,35 +444,35 @@
 
     <nav class="sidebar-nav">
         <div class="sidebar-section">Principal</div>
-        <a href="
+        <a href="#" class="sidebar-link active" data-panel="dashboard">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
             Dashboard
         </a>
-        <a href="
+        <a href="#" class="sidebar-link" data-panel="ongs">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             Gestão de ONGs
             <span class="badge warn">3</span>
         </a>
-        <a href="
+        <a href="#" class="sidebar-link" data-panel="acoes">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
             Ações e Eventos
         </a>
-        <a href="
+        <a href="#" class="sidebar-link" data-panel="demandas">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
             Demandas
             <span class="badge">7</span>
         </a>
 
         <div class="sidebar-section">Gestão</div>
-        <a href="
+        <a href="#" class="sidebar-link" data-panel="recursos">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
             Recursos
         </a>
-        <a href="
+        <a href="#" class="sidebar-link" data-panel="relatorios">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
             Relatórios
         </a>
-        <a href="
+        <a href="#" class="sidebar-link" data-panel="comunicados">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             Comunicados
         </a>
@@ -470,8 +486,9 @@
     </div>
 </aside>
 
+<!-- ===== MAIN ===== -->
 <main class="main">
-
+    <!-- TOPBAR -->
     <div class="topbar">
         <h1 class="topbar-title" id="topbar-title">Visão <em>Geral</em></h1>
         <div class="topbar-right">
@@ -486,6 +503,7 @@
 
     <div class="content">
 
+        <!-- ======= DASHBOARD ======= -->
         <div class="panel active" id="panel-dashboard">
             <div class="section-page-header">
                 <div class="label">Programa Arca — Serra, ES</div>
@@ -529,7 +547,7 @@
             </div>
 
             <div class="grid-2">
-
+                <!-- Atividade recente -->
                 <div class="table-card">
                     <div class="table-header">
                         <span class="table-title">Atividade <em>recente</em></span>
@@ -564,6 +582,7 @@
                     </div>
                 </div>
 
+                <!-- Ações rápidas -->
                 <div>
                     <div class="table-card">
                         <div class="table-header"><span class="table-title">Ações <em>rápidas</em></span></div>
@@ -585,6 +604,7 @@
                 </div>
             </div>
 
+            <!-- Tabela de ONGs -->
             <div class="table-card">
                 <div class="table-header">
                     <span class="table-title">ONGs <em>recentes</em></span>
@@ -607,6 +627,7 @@
             </div>
         </div>
 
+        <!-- ======= GESTÃO DE ONGS ======= -->
         <div class="panel" id="panel-ongs">
             <div class="section-page-header">
                 <div class="label">Administração</div>
@@ -655,7 +676,7 @@
                             <td>
                                 <div style="display:flex;gap:0.4rem;">
                                     <button class="btn-sm primary" onclick="showToast('✅ ONG aprovada com sucesso!')">Aprovar</button>
-                                    <button class="btn-sm outline" style="color:
+                                    <button class="btn-sm outline" style="color:#dc2626;border-color:rgba(220,38,38,0.3);" onclick="showToast('❌ Solicitação recusada.')">Recusar</button>
                                 </div>
                             </td>
                         </tr>
@@ -668,7 +689,7 @@
                             <td>
                                 <div style="display:flex;gap:0.4rem;">
                                     <button class="btn-sm primary" onclick="showToast('✅ ONG aprovada com sucesso!')">Aprovar</button>
-                                    <button class="btn-sm outline" style="color:
+                                    <button class="btn-sm outline" style="color:#dc2626;border-color:rgba(220,38,38,0.3);" onclick="showToast('❌ Solicitação recusada.')">Recusar</button>
                                 </div>
                             </td>
                         </tr>
@@ -685,6 +706,7 @@
             </div>
         </div>
 
+        <!-- ======= AÇÕES E EVENTOS ======= -->
         <div class="panel" id="panel-acoes">
             <div class="section-page-header">
                 <div class="label">Operações</div>
@@ -714,6 +736,7 @@
             </div>
         </div>
 
+        <!-- ======= DEMANDAS ======= -->
         <div class="panel" id="panel-demandas">
             <div class="section-page-header">
                 <div class="label">Cidadãos</div>
@@ -760,6 +783,7 @@
             </div>
         </div>
 
+        <!-- ======= RECURSOS ======= -->
         <div class="panel" id="panel-recursos">
             <div class="section-page-header">
                 <div class="label">Administração</div>
@@ -799,6 +823,7 @@
             </div>
         </div>
 
+        <!-- ======= RELATÓRIOS ======= -->
         <div class="panel" id="panel-relatorios">
             <div class="section-page-header">
                 <div class="label">Transparência</div>
@@ -830,6 +855,7 @@
             </div>
         </div>
 
+        <!-- ======= COMUNICADOS ======= -->
         <div class="panel" id="panel-comunicados">
             <div class="section-page-header">
                 <div class="label">Comunicação</div>
@@ -879,9 +905,12 @@
             </div>
         </div>
 
-    </div>
+    </div><!-- /content -->
 </main>
 
+<!-- ===== MODAIS ===== -->
+
+<!-- Modal: Aprovar ONG -->
 <div class="modal-overlay" id="modal-ong">
     <div class="modal">
         <div class="modal-header">
@@ -906,6 +935,7 @@
     </div>
 </div>
 
+<!-- Modal: Criar Evento -->
 <div class="modal-overlay" id="modal-evento">
     <div class="modal">
         <div class="modal-header">
@@ -937,6 +967,7 @@
     </div>
 </div>
 
+<!-- Modal: Comunicado -->
 <div class="modal-overlay" id="modal-comunicado">
     <div class="modal">
         <div class="modal-header">
@@ -964,17 +995,19 @@
     </div>
 </div>
 
+<!-- TOAST -->
 <div class="toast" id="toast">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
     <span id="toast-msg">Ação realizada!</span>
 </div>
 
 <script>
-
+    // DATA
     const now = new Date();
     document.getElementById('topbar-date').textContent =
         now.toLocaleDateString('pt-BR', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
 
+    // NAVEGAÇÃO
     function showPanel(name) {
         document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
         document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
@@ -1002,6 +1035,7 @@
         });
     });
 
+    // MODAIS
     function openModal(id)  { document.getElementById(id).classList.add('open'); }
     function closeModal(id) { document.getElementById(id).classList.remove('open'); }
     document.querySelectorAll('.modal-overlay').forEach(m => {
@@ -1014,6 +1048,7 @@
         showToast(msg);
     }
 
+    // TOAST
     function showToast(msg) {
         const t = document.getElementById('toast');
         document.getElementById('toast-msg').textContent = msg;
