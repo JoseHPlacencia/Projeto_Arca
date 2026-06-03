@@ -4,60 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./login.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,900;1,9..144,300;1,9..144,600&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
     <title>Cidadão — Programa Arca</title>
 </head>
 <body class="perfil-cidadao">
 
-    <!-- PARTÍCULAS -->
-    <div class="bg-particles" aria-hidden="true">
-        <span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span>
-    </div>
-
-    <!-- HEADER -->
-    <header class="page-header">
-        <nav>
-            <a href="./index.html" class="nav-brand">
-                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-                    <path d="M14 2L26 10v8c0 5.5-5.2 9.8-12 10C6.2 27.8 1 23.5 1 18v-8L14 2z" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                    <path d="M8 16l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Prefeitura da Serra
-            </a>
-            <div class="nav-links">
-                <a href="./index.html" class="nav-link back">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg>
-                    Voltar ao início
-                </a>
-            </div>
-        </nav>
-
-        <div class="header-hero">
-            <div class="header-text">
-                <div class="header-perfil-badge">
-                    <span class="badge-dot">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                    </span>
-                    Área do Cidadão
-                </div>
-                <h1>Participe, fiscalize e<br><em>transforme</em> a Serra</h1>
-                <p>Acesse sua conta ou crie um cadastro gratuito para fazer parte do Programa Arca.</p>
-            </div>
-        </div>
-
-        <div class="wave-divider" aria-hidden="true">
-            <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0,45 C360,0 720,70 1080,30 C1260,10 1380,55 1440,45 L1440,70 L0,70 Z" fill="var(--bg-main)"/>
-            </svg>
-        </div>
-    </header>
-
-    <!-- MAIN -->
     <main>
-        <div class="auth-container">
+        <a href="../../index.html" class="back-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg>
+            Voltar ao início
+        </a>
 
-            <!-- TABS -->
+        <div class="auth-container">
             <div class="auth-tabs" role="tablist">
                 <button class="auth-tab active" id="tab-login" role="tab" aria-selected="true" aria-controls="panel-login" onclick="switchTab('login')">
                     Entrar na conta
@@ -67,18 +25,14 @@
                 </button>
             </div>
 
-            <!-- CARD -->
             <div class="auth-card">
-
-                <!-- ===== PAINEL LOGIN ===== -->
                 <div class="auth-panel active" id="panel-login" role="tabpanel" aria-labelledby="tab-login">
-                    <h2>Bem-vindo de volta 👋</h2>
+                    <h2>Bem-vindo de volta</h2>
                     <p class="auth-subtitle">Entre com seu CPF ou e-mail para acessar o sistema.</p>
 
                     <div class="form-group">
                         <label for="login-cpf">CPF ou E-mail</label>
                         <div class="input-wrap">
-                            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                             <input type="text" id="login-cpf" placeholder="000.000.000-00 ou email@exemplo.com" autocomplete="username">
                         </div>
                     </div>
@@ -86,53 +40,46 @@
                     <div class="form-group">
                         <label for="login-senha">Senha</label>
                         <div class="input-wrap">
-                            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                             <input type="password" id="login-senha" placeholder="Sua senha" autocomplete="current-password">
-                            <button class="input-toggle" type="button" onclick="toggleSenha('login-senha', this)" aria-label="Mostrar senha">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                            </button>
+                            <button class="input-toggle" type="button" onclick="toggleSenha('login-senha', this)">Mostrar</button>
                         </div>
                     </div>
 
-                    <a href="#" class="forgot-link">Esqueci minha senha →</a>
+                    <a href="#" class="forgot-link">Esqueci minha senha</a>
 
                     <div class="form-check">
-                        <input type="checkbox" id="manter-login" name="manter-login">
+                        <input type="checkbox" id="manter-login">
                         <label for="manter-login">Manter-me conectado neste dispositivo</label>
                     </div>
 
                     <button class="btn-submit" type="button" onclick="handleLogin()">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
                         Entrar no sistema
                     </button>
 
                     <div class="success-msg" id="success-login">
                         <div class="success-icon">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
                         </div>
                         <h3>Login realizado!</h3>
                         <p>Você está sendo redirecionado para seu painel de cidadão.</p>
                     </div>
                 </div>
 
-                <!-- ===== PAINEL CADASTRO ===== -->
                 <div class="auth-panel" id="panel-cadastro" role="tabpanel" aria-labelledby="tab-cadastro">
                     <h2>Crie sua conta gratuita</h2>
-                    <p class="auth-subtitle">Cadastro rápido — menos de 2 minutos para fazer parte da Arca.</p>
+                    <p class="auth-subtitle">Cadastro rápido para fazer parte da Arca.</p>
 
                     <div class="form-row">
                         <div class="form-group">
                             <label for="cad-nome">Nome</label>
                             <div class="input-wrap">
-                                <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                                <input type="text" id="cad-nome" placeholder="Seu nome" autocomplete="given-name">
+                                <input type="text" id="cad-nome" placeholder="Seu nome">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="cad-sobrenome">Sobrenome</label>
                             <div class="input-wrap">
-                                <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                                <input type="text" id="cad-sobrenome" placeholder="Seu sobrenome" autocomplete="family-name">
+                                <input type="text" id="cad-sobrenome" placeholder="Seu sobrenome">
                             </div>
                         </div>
                     </div>
@@ -140,34 +87,14 @@
                     <div class="form-group">
                         <label for="cad-cpf">CPF</label>
                         <div class="input-wrap">
-                            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="13" y2="14"/></svg>
-                            <input type="text" id="cad-cpf" placeholder="000.000.000-00" maxlength="14" oninput="mascaraCPF(this)" autocomplete="off">
+                            <input type="text" id="cad-cpf" placeholder="000.000.000-00" maxlength="14" oninput="mascaraCPF(this)">
                         </div>
-                        <span class="field-error">CPF inválido. Verifique os dígitos.</span>
                     </div>
 
                     <div class="form-group">
                         <label for="cad-email">E-mail</label>
                         <div class="input-wrap">
-                            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                            <input type="email" id="cad-email" placeholder="seu@email.com" autocomplete="email">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="cad-telefone">Telefone</label>
-                            <div class="input-wrap">
-                                <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.69 3.37 2 2 0 0 1 3.66 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.63a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                                <input type="tel" id="cad-telefone" placeholder="(27) 99999-9999" maxlength="15" oninput="mascaraTel(this)">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="cad-bairro">Bairro (Serra/ES)</label>
-                            <div class="input-wrap">
-                                <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                                <input type="text" id="cad-bairro" placeholder="Ex: Colina de Laranjeiras">
-                            </div>
+                            <input type="email" id="cad-email" placeholder="seu@email.com">
                         </div>
                     </div>
 
@@ -176,11 +103,8 @@
                     <div class="form-group">
                         <label for="cad-senha">Senha</label>
                         <div class="input-wrap">
-                            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                            <input type="password" id="cad-senha" placeholder="Mínimo 8 caracteres" oninput="medirSenha(this.value)" autocomplete="new-password">
-                            <button class="input-toggle" type="button" onclick="toggleSenha('cad-senha', this)" aria-label="Mostrar senha">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                            </button>
+                            <input type="password" id="cad-senha" placeholder="Mínimo 8 caracteres" oninput="medirSenha(this.value)">
+                            <button class="input-toggle" type="button" onclick="toggleSenha('cad-senha', this)">Mostrar</button>
                         </div>
                         <div class="strength-meter" id="strength-meter">
                             <div class="strength-bar" id="sb1"></div>
@@ -191,146 +115,22 @@
                         <p class="strength-label" id="strength-label"></p>
                     </div>
 
-                    <div class="form-group">
-                        <label for="cad-confirma">Confirmar senha</label>
-                        <div class="input-wrap">
-                            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                            <input type="password" id="cad-confirma" placeholder="Repita a senha" autocomplete="new-password">
-                            <button class="input-toggle" type="button" onclick="toggleSenha('cad-confirma', this)" aria-label="Mostrar senha">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                            </button>
-                        </div>
-                        <span class="field-error">As senhas não coincidem.</span>
-                    </div>
-
-                    <div class="form-check">
-                        <input type="checkbox" id="aceitar-termos" name="aceitar-termos">
-                        <label for="aceitar-termos">Li e concordo com os <a href="#">Termos de Uso</a> e a <a href="#">Política de Privacidade</a> do Programa Arca da Serra.</label>
-                    </div>
-
                     <button class="btn-submit" type="button" onclick="handleCadastro()">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
                         Criar minha conta
                     </button>
 
                     <div class="success-msg" id="success-cadastro">
                         <div class="success-icon">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
                         </div>
-                        <h3>Cadastro realizado! 🎉</h3>
-                        <p>Verifique seu e-mail para confirmar o cadastro e ativar sua conta na Arca da Serra.</p>
-                    </div>
-
-                    <div class="info-box">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                        <p><strong>Seus dados estão seguros.</strong> O Programa Arca segue a LGPD. Suas informações são usadas exclusivamente para comunicação e participação nas ações do programa.</p>
+                        <h3>Cadastro realizado!</h3>
+                        <p>Verifique seu e-mail para confirmar o cadastro.</p>
                     </div>
                 </div>
-
-            </div><!-- /.auth-card -->
-        </div><!-- /.auth-container -->
+            </div>
+        </div>
     </main>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-brand">
-                <svg width="20" height="20" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-                    <path d="M14 2L26 10v8c0 5.5-5.2 9.8-12 10C6.2 27.8 1 23.5 1 18v-8L14 2z" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                    <path d="M8 16l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span><strong>Programa Arca</strong> — Prefeitura da Serra</span>
-            </div>
-            <p class="footer-copy">© 2025 Prefeitura Municipal da Serra, ES. Todos os direitos reservados.</p>
-        </div>
-    </footer>
-
-    <script>
-        /* ---------- TABS ---------- */
-        function switchTab(tab) {
-            document.querySelectorAll('.auth-tab').forEach(t => {
-                t.classList.remove('active');
-                t.setAttribute('aria-selected', 'false');
-            });
-            document.querySelectorAll('.auth-panel').forEach(p => p.classList.remove('active'));
-            document.getElementById('tab-' + tab).classList.add('active');
-            document.getElementById('tab-' + tab).setAttribute('aria-selected', 'true');
-            document.getElementById('panel-' + tab).classList.add('active');
-        }
-
-        /* ---------- TOGGLE SENHA ---------- */
-        function toggleSenha(id, btn) {
-            const inp = document.getElementById(id);
-            const show = inp.type === 'password';
-            inp.type = show ? 'text' : 'password';
-            btn.innerHTML = show
-                ? `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>`
-                : `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`;
-        }
-
-        /* ---------- MÁSCARA CPF ---------- */
-        function mascaraCPF(el) {
-            let v = el.value.replace(/\D/g, '').slice(0, 11);
-            v = v.replace(/(\d{3})(\d)/, '$1.$2');
-            v = v.replace(/(\d{3})(\d)/, '$1.$2');
-            v = v.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-            el.value = v;
-        }
-
-        /* ---------- MÁSCARA TELEFONE ---------- */
-        function mascaraTel(el) {
-            let v = el.value.replace(/\D/g, '').slice(0, 11);
-            v = v.replace(/^(\d{2})(\d)/, '($1) $2');
-            v = v.replace(/(\d{5})(\d)/, '$1-$2');
-            el.value = v;
-        }
-
-        /* ---------- FORÇA DA SENHA ---------- */
-        function medirSenha(val) {
-            const bars = ['sb1','sb2','sb3','sb4'].map(id => document.getElementById(id));
-            const label = document.getElementById('strength-label');
-            let score = 0;
-            if (val.length >= 8) score++;
-            if (/[A-Z]/.test(val)) score++;
-            if (/[0-9]/.test(val)) score++;
-            if (/[^a-zA-Z0-9]/.test(val)) score++;
-            const colors = ['', '#dc2626', '#f59e0b', '#3b82f6', '#1ca97a'];
-            const labels = ['', 'Fraca', 'Regular', 'Boa', 'Forte'];
-            bars.forEach((b, i) => b.style.background = i < score ? colors[score] : '');
-            label.textContent = val.length ? labels[score] : '';
-            label.style.color = colors[score];
-        }
-
-        /* ---------- SUBMIT LOGIN ---------- */
-        function handleLogin() {
-            const btn = document.querySelector('#panel-login .btn-submit');
-            btn.disabled = true;
-            btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="animation:spin 1s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Entrando...';
-            setTimeout(() => {
-    btn.style.display = 'none';
-    document.getElementById('success-login').classList.add('show');
-
-    // Redireciona depois de 1 segundo
-    setTimeout(() => {
-        window.location.href = "../cidadao/home_cidadao.html";
-    }, 1000);
-
-}, 1500);
-        }
-
-        /* ---------- SUBMIT CADASTRO ---------- */
-        function handleCadastro() {
-            const btn = document.querySelector('#panel-cadastro .btn-submit');
-            btn.disabled = true;
-            btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="animation:spin 1s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Criando conta...';
-            setTimeout(() => {
-                btn.style.display = 'none';
-                document.getElementById('success-cadastro').classList.add('show');
-            }, 1600);
-        }
-    </script>
-    <style>
-        @keyframes spin { to { transform: rotate(360deg); } }
-    </style>
+    <script src="./cidadao.js"></script>
 </body>
 </html>

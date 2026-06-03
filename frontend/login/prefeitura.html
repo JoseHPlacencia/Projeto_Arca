@@ -4,283 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./login.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,900;1,9..144,300;1,9..144,600&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
     <title>Prefeitura — Programa Arca</title>
 </head>
 <body class="perfil-prefeitura">
 
-    <!-- PARTÍCULAS -->
-    <div class="bg-particles" aria-hidden="true">
-        <span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span>
-    </div>
-
-    <!-- HEADER -->
-    <header class="page-header">
-        <nav>
-            <a href="./index.html" class="nav-brand">
-                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-                    <path d="M14 2L26 10v8c0 5.5-5.2 9.8-12 10C6.2 27.8 1 23.5 1 18v-8L14 2z" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                    <path d="M8 16l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Prefeitura da Serra
-            </a>
-            <div class="nav-links">
-                <a href="./index.html" class="nav-link back">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg>
-                    Voltar ao início
-                </a>
-            </div>
-        </nav>
-
-        <div class="header-hero">
-            <div class="header-text">
-                <div class="header-perfil-badge">
-                    <span class="badge-dot">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-4a2 2 0 0 1 4 0v4"/></svg>
-                    </span>
-                    Acesso Institucional
-                </div>
-                <h1>Gestão e<br><em>administração</em> da Arca</h1>
-                <p>Portal restrito a servidores e gestores municipais credenciados da Prefeitura da Serra.</p>
-            </div>
-        </div>
-
-        <div class="wave-divider" aria-hidden="true">
-            <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0,45 C360,0 720,70 1080,30 C1260,10 1380,55 1440,45 L1440,70 L0,70 Z" fill="var(--bg-main)"/>
-            </svg>
-        </div>
-    </header>
-
-    <!-- MAIN -->
     <main>
-        <div class="auth-container">
+        <a href="../../index.html" class="back-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg>
+            Voltar ao início
+        </a>
 
-            <!-- TABS -->
+        <div class="auth-container">
             <div class="auth-tabs" role="tablist">
-                <button class="auth-tab active" id="tab-login" role="tab" aria-selected="true" aria-controls="panel-login" onclick="switchTab('login')">
-                    Acesso ao sistema
-                </button>
-                <button class="auth-tab" id="tab-cadastro" role="tab" aria-selected="false" aria-controls="panel-cadastro" onclick="switchTab('cadastro')">
-                    Solicitar acesso
-                </button>
+                <button class="auth-tab active" id="tab-login" role="tab" onclick="switchTab('login')">Acesso ao sistema</button>
+                <button class="auth-tab" id="tab-cadastro" role="tab" onclick="switchTab('cadastro')">Solicitar acesso</button>
             </div>
 
-            <!-- CARD -->
             <div class="auth-card">
-
-                <!-- ===== PAINEL LOGIN ===== -->
-                <div class="auth-panel active" id="panel-login" role="tabpanel" aria-labelledby="tab-login">
+                <div class="auth-panel active" id="panel-login">
                     <h2>Acesso Institucional</h2>
-                    <p class="auth-subtitle">Use suas credenciais de servidor para entrar no painel administrativo.</p>
+                    <p class="auth-subtitle">Use suas credenciais de servidor para entrar.</p>
 
                     <div class="form-group">
-                        <label for="login-matricula">Matrícula Funcional</label>
+                        <label>Matrícula Funcional</label>
+                        <div class="input-wrap"><input type="text" placeholder="PMSerra-00000"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Senha</label>
                         <div class="input-wrap">
-                            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="13" y2="14"/></svg>
-                            <input type="text" id="login-matricula" placeholder="Ex: PMSerra-00000" autocomplete="username">
+                            <input type="password" id="login-senha" placeholder="Senha do sistema">
+                            <button class="input-toggle" type="button" onclick="toggleSenha('login-senha', this)">Mostrar</button>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="login-email-inst">E-mail Institucional</label>
-                        <div class="input-wrap">
-                            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                            <input type="email" id="login-email-inst" placeholder="nome@serra.es.gov.br" autocomplete="email">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="login-senha">Senha de acesso</label>
-                        <div class="input-wrap">
-                            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                            <input type="password" id="login-senha" placeholder="Senha do sistema" autocomplete="current-password">
-                            <button class="input-toggle" type="button" onclick="toggleSenha('login-senha', this)" aria-label="Mostrar senha">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                            </button>
-                        </div>
-                    </div>
-
-                    <a href="#" class="forgot-link">Problemas com acesso? Contacte o TI →</a>
-
-                    <button class="btn-submit" type="button" onclick="handleLogin()">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
-                        Entrar no painel
-                    </button>
+                    <a href="#" class="forgot-link">Problemas com acesso? Contacte o TI</a>
+                    <button class="btn-submit" type="button" onclick="handleLogin()">Entrar no painel</button>
 
                     <div class="success-msg" id="success-login">
-                        <div class="success-icon">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                        </div>
+                        <div class="success-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div>
                         <h3>Acesso autorizado!</h3>
-                        <p>Redirecionando para o painel de gestão do Programa Arca.</p>
-                    </div>
-
-                    <div class="info-box">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                        <p><strong>Acesso restrito.</strong> Este portal é exclusivo para servidores da Prefeitura da Serra credenciados no Programa Arca. Acessos indevidos são registrados e podem resultar em penalidades.</p>
+                        <p>Redirecionando para o painel de gestão.</p>
                     </div>
                 </div>
 
-                <!-- ===== PAINEL CADASTRO ===== -->
-                <div class="auth-panel" id="panel-cadastro" role="tabpanel" aria-labelledby="tab-cadastro">
-                    <h2>Solicitar acesso institucional</h2>
-                    <p class="auth-subtitle">Preencha os dados para que o setor de TI analise e libere seu acesso em até 2 dias úteis.</p>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="cad-nome">Nome</label>
-                            <div class="input-wrap">
-                                <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                                <input type="text" id="cad-nome" placeholder="Nome completo" autocomplete="given-name">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="cad-matricula">Matrícula</label>
-                            <div class="input-wrap">
-                                <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="13" y2="14"/></svg>
-                                <input type="text" id="cad-matricula" placeholder="PMSerra-00000">
-                            </div>
-                        </div>
-                    </div>
+                <div class="auth-panel" id="panel-cadastro">
+                    <h2>Solicitar acesso</h2>
+                    <p class="auth-subtitle">Preencha os dados para análise do setor de TI.</p>
 
                     <div class="form-group">
-                        <label for="cad-email-inst">E-mail Institucional</label>
-                        <div class="input-wrap">
-                            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                            <input type="email" id="cad-email-inst" placeholder="nome@serra.es.gov.br" autocomplete="email">
-                        </div>
+                        <label>Nome Completo</label>
+                        <div class="input-wrap"><input type="text" placeholder="Nome"></div>
                     </div>
-
                     <div class="form-group">
-                        <label for="cad-secretaria">Secretaria / Setor</label>
-                        <div class="input-wrap">
-                            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/></svg>
-                            <select id="cad-secretaria" class="no-icon" style="padding-left:2.6rem">
-                                <option value="" disabled selected>Selecione a secretaria</option>
-                                <option>SEMAS — Assistência Social</option>
-                                <option>SEMUS — Saúde</option>
-                                <option>SEMED — Educação</option>
-                                <option>SEMMA — Meio Ambiente</option>
-                                <option>SEMOSP — Obras e Serviços Públicos</option>
-                                <option>SECOM — Comunicação</option>
-                                <option>Gabinete do Prefeito</option>
-                                <option>Outra secretaria</option>
-                            </select>
-                        </div>
+                        <label>Matrícula</label>
+                        <div class="input-wrap"><input type="text" placeholder="PMSerra-00000"></div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="cad-cargo">Cargo / Função</label>
-                        <div class="input-wrap">
-                            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-                            <input type="text" id="cad-cargo" placeholder="Ex: Coordenador de Projetos Sociais">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="cad-nivel">Nível de acesso solicitado</label>
-                        <div class="input-wrap">
-                            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                            <select id="cad-nivel" style="padding-left:2.6rem">
-                                <option value="" disabled selected>Selecione o nível</option>
-                                <option>Visualização (somente leitura)</option>
-                                <option>Operacional (leitura e registros)</option>
-                                <option>Gestor (leitura, registros e aprovações)</option>
-                                <option>Administrador (acesso total)</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="cad-justificativa">Justificativa da solicitação</label>
-                        <div class="input-wrap">
-                            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="top:1.1rem;transform:none"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-                            <textarea id="cad-justificativa" placeholder="Descreva brevemente por que precisa de acesso ao sistema e quais atividades realizará..."></textarea>
-                        </div>
-                    </div>
-
-                    <div class="form-check">
-                        <input type="checkbox" id="aceitar-termos" name="aceitar-termos">
-                        <label for="aceitar-termos">Declaro que as informações acima são verdadeiras e estou ciente das <a href="#">Políticas de Acesso ao Sistema</a> da Prefeitura da Serra.</label>
-                    </div>
-
-                    <button class="btn-submit" type="button" onclick="handleCadastro()">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.69 3.37 2 2 0 0 1 3.66 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.63a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                        Enviar solicitação
-                    </button>
+                    <button class="btn-submit" type="button" onclick="handleCadastro()">Enviar solicitação</button>
 
                     <div class="success-msg" id="success-cadastro">
-                        <div class="success-icon">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                        </div>
+                        <div class="success-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div>
                         <h3>Solicitação enviada!</h3>
-                        <p>O setor de TI da Prefeitura analisará sua solicitação e você receberá uma resposta em até <strong>2 dias úteis</strong> no e-mail institucional informado.</p>
-                    </div>
-
-                    <div class="info-box">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                        <p><strong>Aprovação necessária.</strong> A liberação de acesso requer validação da matrícula junto ao RH municipal e aprovação do gestor responsável pelo setor indicado.</p>
+                        <p>O setor de TI responderá em até 2 dias úteis.</p>
                     </div>
                 </div>
-
-            </div><!-- /.auth-card -->
-        </div><!-- /.auth-container -->
+            </div>
+        </div>
     </main>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-brand">
-                <svg width="20" height="20" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-                    <path d="M14 2L26 10v8c0 5.5-5.2 9.8-12 10C6.2 27.8 1 23.5 1 18v-8L14 2z" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                    <path d="M8 16l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span><strong>Programa Arca</strong> — Prefeitura da Serra</span>
-            </div>
-            <p class="footer-copy">© 2025 Prefeitura Municipal da Serra, ES. Todos os direitos reservados.</p>
-        </div>
-    </footer>
-
-    <script>
-        function switchTab(tab) {
-            document.querySelectorAll('.auth-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
-            document.querySelectorAll('.auth-panel').forEach(p => p.classList.remove('active'));
-            document.getElementById('tab-' + tab).classList.add('active');
-            document.getElementById('tab-' + tab).setAttribute('aria-selected','true');
-            document.getElementById('panel-' + tab).classList.add('active');
-        }
-        function toggleSenha(id, btn) {
-            const inp = document.getElementById(id);
-            const show = inp.type === 'password';
-            inp.type = show ? 'text' : 'password';
-            btn.innerHTML = show
-                ? `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>`
-                : `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`;
-        }
-        function handleLogin() {
-            const btn = document.querySelector('#panel-login .btn-submit');
-            btn.disabled = true;
-            btn.textContent = 'Verificando credenciais...';
-            setTimeout(() => {
-    btn.style.display = 'none';
-    document.getElementById('success-login').classList.add('show');
-
-    // Redireciona depois de 1 segundo
-    setTimeout(() => {
-        window.location.href = "../prefeitura/home_prefeitura.html";
-    }, 1000);
-
-}, 1500);
-
-        }
-        function handleCadastro() {
-            const btn = document.querySelector('#panel-cadastro .btn-submit');
-            btn.disabled = true;
-            btn.textContent = 'Enviando solicitação...';
-            setTimeout(() => { btn.style.display='none'; document.getElementById('success-cadastro').classList.add('show'); }, 1600);
-        }
-    </script>
+    <script src="./prefeitura.js"></script>
 </body>
 </html>

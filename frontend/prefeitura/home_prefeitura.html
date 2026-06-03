@@ -3,433 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,900;1,9..144,300;1,9..144,600&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700;800&family=Fraunces:opsz,wght@9..144,650;9..144,800;9..144,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="prefeitura_dashboard.css">
     <title>Painel Prefeitura — Programa Arca</title>
-    <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --azul-prof: #0a2540;
-            --azul-med:  #1a4a7a;
-            --azul-vib:  #1e6fc4;
-            --azul-ceu:  #3b9edd;
-            --azul-claro:#e8f4fd;
-            --verde:     #1ca97a;
-            --verde-clar:#e3f7f0;
-            --dourado:   #f0a500;
-            --dourado-cl:#fff3d4;
-            --branco:    #f8fafc;
-            --cinza:     #64748b;
-            --cinza-clar:#f1f5f9;
-            --texto:     #0f172a;
-            --bg-main:   #f0f7ff;
-            --shadow-sm: 0 2px 12px rgba(10,37,64,0.08);
-            --shadow-md: 0 8px 32px rgba(10,37,64,0.13);
-            --radius-sm: 12px;
-            --radius-md: 18px;
-            --sidebar-w: 260px;
-        }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Nunito', 'Segoe UI', sans-serif;
-            background: var(--bg-main);
-            color: var(--texto);
-            display: flex; min-height: 100vh;
-        }
-
-        /* ===== SIDEBAR ===== */
-        .sidebar {
-            width: var(--sidebar-w);
-            background: linear-gradient(180deg, var(--azul-prof) 0%, #0e2d50 100%);
-            display: flex; flex-direction: column;
-            position: fixed; top: 0; left: 0; bottom: 0;
-            z-index: 100; overflow-y: auto;
-        }
-        .sidebar-header {
-            padding: 1.8rem 1.5rem 1.2rem;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-        }
-        .sidebar-brand {
-            display: flex; align-items: center; gap: 0.6rem;
-            color: white; font-size: 0.9rem; font-weight: 700;
-            text-decoration: none; margin-bottom: 0.5rem;
-        }
-        .sidebar-brand svg { color: rgba(255,255,255,0.6); }
-        .sidebar-user-tag {
-            font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
-            text-transform: uppercase; color: var(--dourado);
-            background: rgba(240,165,0,0.15);
-            padding: 0.25rem 0.7rem; border-radius: 100px;
-            border: 1px solid rgba(240,165,0,0.25);
-            display: inline-block;
-        }
-
-        .sidebar-nav { flex: 1; padding: 1.5rem 0; }
-        .sidebar-section {
-            font-size: 0.65rem; font-weight: 800; letter-spacing: 0.14em;
-            text-transform: uppercase; color: rgba(255,255,255,0.3);
-            padding: 0 1.5rem; margin: 1.2rem 0 0.5rem;
-        }
-        .sidebar-link {
-            display: flex; align-items: center; gap: 0.75rem;
-            padding: 0.7rem 1.5rem;
-            color: rgba(255,255,255,0.6);
-            text-decoration: none; font-size: 0.875rem; font-weight: 600;
-            transition: all 0.2s;
-            border-left: 3px solid transparent;
-            position: relative;
-        }
-        .sidebar-link:hover { color: white; background: rgba(255,255,255,0.05); }
-        .sidebar-link.active {
-            color: white;
-            background: rgba(30,111,196,0.2);
-            border-left-color: var(--azul-vib);
-        }
-        .sidebar-link .badge {
-            margin-left: auto; background: var(--verde);
-            color: white; font-size: 0.65rem; font-weight: 800;
-            padding: 0.15rem 0.5rem; border-radius: 100px;
-        }
-        .sidebar-link .badge.warn { background: var(--dourado); color: var(--azul-prof); }
-
-        .sidebar-footer {
-            padding: 1.2rem 1.5rem;
-            border-top: 1px solid rgba(255,255,255,0.08);
-        }
-        .sidebar-logout {
-            display: flex; align-items: center; gap: 0.6rem;
-            color: rgba(255,255,255,0.45); font-size: 0.82rem; font-weight: 600;
-            text-decoration: none; padding: 0.5rem 0;
-            transition: color 0.2s;
-        }
-        .sidebar-logout:hover { color: rgba(255,255,255,0.8); }
-
-        /* ===== MAIN ===== */
-        .main {
-            margin-left: var(--sidebar-w);
-            flex: 1; display: flex; flex-direction: column; min-height: 100vh;
-        }
-
-        /* TOPBAR */
-        .topbar {
-            background: white;
-            border-bottom: 1px solid rgba(30,111,196,0.08);
-            padding: 1rem 2rem;
-            display: flex; align-items: center; justify-content: space-between;
-            position: sticky; top: 0; z-index: 50;
-            box-shadow: var(--shadow-sm);
-        }
-        .topbar-title {
-            font-family: 'Fraunces', serif;
-            font-size: 1.35rem; font-weight: 700;
-            color: var(--azul-prof); letter-spacing: -0.02em;
-        }
-        .topbar-title em { font-style: italic; color: var(--azul-vib); }
-        .topbar-right { display: flex; align-items: center; gap: 1rem; }
-        .topbar-date { font-size: 0.8rem; color: var(--cinza); font-weight: 600; }
-        .topbar-avatar {
-            width: 36px; height: 36px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--azul-vib), var(--azul-med));
-            display: flex; align-items: center; justify-content: center;
-            color: white; font-size: 0.8rem; font-weight: 800; cursor: pointer;
-        }
-        .topbar-notif {
-            position: relative; width: 36px; height: 36px;
-            display: flex; align-items: center; justify-content: center;
-            border-radius: var(--radius-sm);
-            border: 1px solid rgba(30,111,196,0.12);
-            cursor: pointer; color: var(--cinza);
-            transition: all 0.2s;
-        }
-        .topbar-notif:hover { background: var(--azul-claro); color: var(--azul-vib); }
-        .notif-dot {
-            position: absolute; top: 6px; right: 6px;
-            width: 8px; height: 8px; border-radius: 50%;
-            background: var(--verde); border: 2px solid white;
-        }
-
-        /* CONTENT */
-        .content { padding: 2rem; flex: 1; }
-
-        /* PANELS (seções) */
-        .panel { display: none; }
-        .panel.active { display: block; animation: fadeIn 0.3s ease; }
-        @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
-
-        /* ===== CARDS DE MÉTRICAS ===== */
-        .metrics-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            gap: 1.2rem; margin-bottom: 2rem;
-        }
-        .metric-card {
-            background: white;
-            border-radius: var(--radius-md);
-            padding: 1.5rem;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid rgba(30,111,196,0.06);
-            position: relative; overflow: hidden;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .metric-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-        .metric-card::before {
-            content: '';
-            position: absolute; top: 0; left: 0; right: 0; height: 3px;
-        }
-        .metric-card.blue::before  { background: var(--azul-vib); }
-        .metric-card.green::before { background: var(--verde); }
-        .metric-card.gold::before  { background: var(--dourado); }
-        .metric-card.teal::before  { background: var(--azul-ceu); }
-
-        .metric-icon {
-            width: 44px; height: 44px; border-radius: var(--radius-sm);
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 1rem;
-        }
-        .metric-icon.blue  { background: var(--azul-claro); color: var(--azul-vib); }
-        .metric-icon.green { background: var(--verde-clar); color: var(--verde); }
-        .metric-icon.gold  { background: var(--dourado-cl); color: #a06a00; }
-        .metric-icon.teal  { background: #ddf0fb; color: var(--azul-ceu); }
-
-        .metric-num {
-            font-family: 'Fraunces', serif;
-            font-size: 2rem; font-weight: 900;
-            color: var(--azul-prof); line-height: 1;
-            letter-spacing: -0.03em; margin-bottom: 0.3rem;
-        }
-        .metric-label { font-size: 0.8rem; color: var(--cinza); font-weight: 600; }
-        .metric-delta {
-            font-size: 0.75rem; font-weight: 700; margin-top: 0.4rem;
-        }
-        .metric-delta.up { color: var(--verde); }
-        .metric-delta.down { color: #dc2626; }
-
-        /* ===== TABELA ===== */
-        .table-card {
-            background: white; border-radius: var(--radius-md);
-            box-shadow: var(--shadow-sm);
-            border: 1px solid rgba(30,111,196,0.06);
-            overflow: hidden; margin-bottom: 1.5rem;
-        }
-        .table-header {
-            padding: 1.3rem 1.5rem;
-            display: flex; align-items: center; justify-content: space-between;
-            border-bottom: 1px solid var(--cinza-clar);
-        }
-        .table-title {
-            font-family: 'Fraunces', serif;
-            font-size: 1.05rem; font-weight: 700;
-            color: var(--azul-prof); letter-spacing: -0.01em;
-        }
-        .table-title em { font-style: italic; color: var(--azul-vib); }
-        .btn-sm {
-            display: flex; align-items: center; gap: 0.4rem;
-            padding: 0.5rem 1rem; border-radius: 100px;
-            font-size: 0.8rem; font-weight: 700; cursor: pointer;
-            border: none; transition: all 0.2s;
-            font-family: 'Nunito', sans-serif;
-        }
-        .btn-sm.primary { background: var(--azul-vib); color: white; }
-        .btn-sm.primary:hover { background: var(--azul-med); }
-        .btn-sm.outline { background: transparent; color: var(--azul-vib); border: 1px solid rgba(30,111,196,0.3); }
-        .btn-sm.outline:hover { background: var(--azul-claro); }
-
-        table { width: 100%; border-collapse: collapse; }
-        thead th {
-            font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em;
-            text-transform: uppercase; color: var(--cinza);
-            padding: 0.75rem 1.5rem; text-align: left;
-            background: var(--cinza-clar);
-            border-bottom: 1px solid rgba(30,111,196,0.06);
-        }
-        tbody td {
-            padding: 1rem 1.5rem;
-            font-size: 0.875rem; font-weight: 600; color: var(--texto);
-            border-bottom: 1px solid rgba(30,111,196,0.04);
-        }
-        tbody tr:last-child td { border-bottom: none; }
-        tbody tr:hover td { background: #fafcff; }
-
-        .badge-status {
-            display: inline-flex; align-items: center; gap: 0.35rem;
-            padding: 0.3rem 0.75rem; border-radius: 100px;
-            font-size: 0.72rem; font-weight: 800; letter-spacing: 0.04em;
-        }
-        .badge-status::before {
-            content: ''; width: 6px; height: 6px; border-radius: 50%;
-        }
-        .badge-status.ativo   { background: var(--verde-clar); color: #0d7a56; }
-        .badge-status.ativo::before { background: var(--verde); }
-        .badge-status.pendente { background: var(--dourado-cl); color: #8a5a00; }
-        .badge-status.pendente::before { background: var(--dourado); }
-        .badge-status.inativo { background: #fee2e2; color: #dc2626; }
-        .badge-status.inativo::before { background: #dc2626; }
-        .badge-status.analise { background: var(--azul-claro); color: var(--azul-vib); }
-        .badge-status.analise::before { background: var(--azul-vib); }
-
-        /* AÇÃO RÁPIDA */
-        .action-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
-            margin-bottom: 2rem;
-        }
-        .action-card {
-            background: white; border-radius: var(--radius-md);
-            padding: 1.5rem; box-shadow: var(--shadow-sm);
-            border: 2px solid transparent;
-            display: flex; flex-direction: column; gap: 0.8rem;
-            cursor: pointer; text-decoration: none; color: var(--texto);
-            transition: all 0.25s;
-        }
-        .action-card:hover { border-color: rgba(30,111,196,0.2); transform: translateY(-3px); box-shadow: var(--shadow-md); }
-        .action-card-icon {
-            width: 48px; height: 48px; border-radius: var(--radius-sm);
-            display: flex; align-items: center; justify-content: center;
-        }
-        .action-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--azul-prof); }
-        .action-card p  { font-size: 0.8rem; color: var(--cinza); line-height: 1.5; }
-
-        /* TIMELINE ATIVIDADES */
-        .timeline { display: flex; flex-direction: column; gap: 0; }
-        .timeline-item {
-            display: flex; gap: 1rem; padding: 1rem 1.5rem;
-            border-bottom: 1px solid var(--cinza-clar); position: relative;
-        }
-        .timeline-item:last-child { border-bottom: none; }
-        .timeline-dot {
-            flex-shrink: 0; margin-top: 4px;
-            width: 10px; height: 10px; border-radius: 50%;
-        }
-        .timeline-dot.verde  { background: var(--verde); }
-        .timeline-dot.azul   { background: var(--azul-vib); }
-        .timeline-dot.ouro   { background: var(--dourado); }
-        .timeline-text { font-size: 0.87rem; color: #334155; line-height: 1.55; }
-        .timeline-text strong { color: var(--azul-prof); font-weight: 700; }
-        .timeline-time { margin-left: auto; font-size: 0.75rem; color: var(--cinza); flex-shrink: 0; }
-
-        /* SECTION HEADER */
-        .section-page-header { margin-bottom: 1.8rem; }
-        .section-page-header .label {
-            font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em;
-            text-transform: uppercase; color: var(--azul-vib); margin-bottom: 0.3rem;
-        }
-        .section-page-header h2 {
-            font-family: 'Fraunces', serif;
-            font-size: 1.8rem; font-weight: 700;
-            color: var(--azul-prof); letter-spacing: -0.02em;
-        }
-        .section-page-header h2 em { font-style: italic; color: var(--azul-vib); }
-        .section-page-header p { font-size: 0.9rem; color: var(--cinza); margin-top: 0.3rem; }
-
-        /* FORM MODAL */
-        .modal-overlay {
-            position: fixed; inset: 0;
-            background: rgba(10,37,64,0.5);
-            z-index: 200; display: none;
-            align-items: center; justify-content: center;
-            backdrop-filter: blur(4px);
-        }
-        .modal-overlay.open { display: flex; }
-        .modal {
-            background: white; border-radius: var(--radius-lg);
-            padding: 2rem; width: 100%; max-width: 520px;
-            max-height: 90vh; overflow-y: auto;
-            box-shadow: var(--shadow-lg);
-            animation: modalIn 0.3s cubic-bezier(0.22,1,0.36,1);
-        }
-        @keyframes modalIn { from{opacity:0;transform:scale(0.95)} to{opacity:1;transform:scale(1)} }
-        .modal-header {
-            display: flex; align-items: center; justify-content: space-between;
-            margin-bottom: 1.5rem;
-        }
-        .modal-title {
-            font-family: 'Fraunces', serif;
-            font-size: 1.3rem; font-weight: 700; color: var(--azul-prof);
-        }
-        .modal-title em { font-style: italic; color: var(--azul-vib); }
-        .modal-close {
-            width: 32px; height: 32px; border-radius: var(--radius-sm);
-            background: var(--cinza-clar); border: none; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            color: var(--cinza); transition: all 0.2s;
-        }
-        .modal-close:hover { background: #fee2e2; color: #dc2626; }
-        .form-group { margin-bottom: 1.1rem; }
-        .form-group label {
-            display: block; font-size: 0.78rem; font-weight: 800;
-            letter-spacing: 0.06em; text-transform: uppercase;
-            color: var(--azul-prof); margin-bottom: 0.4rem;
-        }
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%; padding: 0.8rem 1rem;
-            border: 2px solid rgba(30,111,196,0.12);
-            border-radius: var(--radius-sm);
-            font-family: 'Nunito', sans-serif;
-            font-size: 0.9rem; font-weight: 600; color: var(--texto);
-            background: white; outline: none; transition: border-color 0.25s, box-shadow 0.25s;
-        }
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            border-color: var(--azul-vib);
-            box-shadow: 0 0 0 3px rgba(30,111,196,0.12);
-        }
-        .form-group textarea { resize: vertical; min-height: 80px; }
-        .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
-        .btn-modal {
-            width: 100%; padding: 0.95rem; border: none; cursor: pointer;
-            border-radius: var(--radius-sm); font-family: 'Nunito', sans-serif;
-            font-size: 0.9rem; font-weight: 700; transition: all 0.25s;
-            display: flex; align-items: center; justify-content: center; gap: 0.5rem;
-        }
-        .btn-modal.primary {
-            background: linear-gradient(135deg, var(--azul-vib), var(--azul-med));
-            color: white; box-shadow: 0 4px 16px rgba(30,111,196,0.3);
-        }
-        .btn-modal.primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(30,111,196,0.35); }
-
-        /* ALERT TOAST */
-        .toast {
-            position: fixed; bottom: 2rem; right: 2rem; z-index: 300;
-            background: var(--azul-prof); color: white;
-            padding: 1rem 1.5rem; border-radius: var(--radius-md);
-            box-shadow: var(--shadow-lg);
-            display: flex; align-items: center; gap: 0.7rem;
-            font-size: 0.875rem; font-weight: 600;
-            transform: translateY(100px); opacity: 0;
-            transition: all 0.4s cubic-bezier(0.22,1,0.36,1);
-        }
-        .toast.show { transform: translateY(0); opacity: 1; }
-        .toast svg { color: var(--verde); }
-
-        /* GRID 2-col */
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.5rem; }
-
-        /* EMPTY STATE */
-        .empty-state {
-            text-align: center; padding: 3rem;
-            color: var(--cinza);
-        }
-        .empty-state svg { color: rgba(30,111,196,0.3); margin-bottom: 1rem; }
-        .empty-state h4 { font-family:'Fraunces',serif; font-size:1.1rem; color:var(--azul-prof); margin-bottom:0.4rem; }
-
-        /* RESPONSIVE */
-        @media (max-width: 1100px) {
-            .metrics-grid { grid-template-columns: repeat(2,1fr); }
-            .action-grid { grid-template-columns: repeat(2,1fr); }
-        }
-        @media (max-width: 800px) {
-            .sidebar { transform: translateX(-100%); transition: transform 0.3s; }
-            .sidebar.open { transform: translateX(0); }
-            .main { margin-left: 0; }
-            .metrics-grid { grid-template-columns: 1fr 1fr; }
-            .action-grid { grid-template-columns: 1fr; }
-            .grid-2 { grid-template-columns: 1fr; }
-        }
-    </style>
 </head>
 <body>
 
-<!-- ===== SIDEBAR ===== -->
 <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
         <a href="./index.html" class="sidebar-brand">
@@ -486,9 +65,7 @@
     </div>
 </aside>
 
-<!-- ===== MAIN ===== -->
 <main class="main">
-    <!-- TOPBAR -->
     <div class="topbar">
         <h1 class="topbar-title" id="topbar-title">Visão <em>Geral</em></h1>
         <div class="topbar-right">
@@ -503,7 +80,6 @@
 
     <div class="content">
 
-        <!-- ======= DASHBOARD ======= -->
         <div class="panel active" id="panel-dashboard">
             <div class="section-page-header">
                 <div class="label">Programa Arca — Serra, ES</div>
@@ -547,7 +123,6 @@
             </div>
 
             <div class="grid-2">
-                <!-- Atividade recente -->
                 <div class="table-card">
                     <div class="table-header">
                         <span class="table-title">Atividade <em>recente</em></span>
@@ -582,20 +157,19 @@
                     </div>
                 </div>
 
-                <!-- Ações rápidas -->
                 <div>
                     <div class="table-card">
                         <div class="table-header"><span class="table-title">Ações <em>rápidas</em></span></div>
                         <div style="padding:1.2rem; display:flex; flex-direction:column; gap:0.7rem;">
-                            <button class="btn-sm primary" style="justify-content:flex-start; gap:0.6rem; padding:0.75rem 1rem; border-radius:var(--radius-sm); font-size:0.875rem;" onclick="openModal('modal-ong')">
+                            <button class="btn-sm primary" style="justify-content:flex-start; gap:0.6rem; padding:0.75rem 1rem; font-size:0.875rem;" onclick="openModal('modal-ong')">
                                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                                 Aprovar nova ONG
                             </button>
-                            <button class="btn-sm outline" style="justify-content:flex-start; gap:0.6rem; padding:0.75rem 1rem; border-radius:var(--radius-sm); font-size:0.875rem;" onclick="openModal('modal-evento')">
+                            <button class="btn-sm outline" style="justify-content:flex-start; gap:0.6rem; padding:0.75rem 1rem; font-size:0.875rem;" onclick="openModal('modal-evento')">
                                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                                 Criar evento / ação
                             </button>
-                            <button class="btn-sm outline" style="justify-content:flex-start; gap:0.6rem; padding:0.75rem 1rem; border-radius:var(--radius-sm); font-size:0.875rem;" onclick="openModal('modal-comunicado')">
+                            <button class="btn-sm outline" style="justify-content:flex-start; gap:0.6rem; padding:0.75rem 1rem; font-size:0.875rem;" onclick="openModal('modal-comunicado')">
                                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                                 Publicar comunicado
                             </button>
@@ -604,7 +178,6 @@
                 </div>
             </div>
 
-            <!-- Tabela de ONGs -->
             <div class="table-card">
                 <div class="table-header">
                     <span class="table-title">ONGs <em>recentes</em></span>
@@ -627,7 +200,6 @@
             </div>
         </div>
 
-        <!-- ======= GESTÃO DE ONGS ======= -->
         <div class="panel" id="panel-ongs">
             <div class="section-page-header">
                 <div class="label">Administração</div>
@@ -653,7 +225,7 @@
                     <tbody>
                         <tr>
                             <td><strong>Patas da Serra</strong></td>
-                            <td style="color:var(--cinza);font-size:0.82rem;">12.345.678/0001-90</td>
+                            <td>12.345.678/0001-90</td>
                             <td>Proteção Animal</td>
                             <td>Ana Mota</td>
                             <td><span class="badge-status ativo">Ativo</span></td>
@@ -661,7 +233,7 @@
                         </tr>
                         <tr>
                             <td><strong>Lar dos Bichos</strong></td>
-                            <td style="color:var(--cinza);font-size:0.82rem;">98.765.432/0001-11</td>
+                            <td>98.765.432/0001-11</td>
                             <td>Proteção Animal</td>
                             <td>Carlos Lima</td>
                             <td><span class="badge-status ativo">Ativo</span></td>
@@ -669,33 +241,33 @@
                         </tr>
                         <tr>
                             <td><strong>Instituto Sorriso Verde</strong></td>
-                            <td style="color:var(--cinza);font-size:0.82rem;">55.444.333/0001-22</td>
+                            <td>55.444.333/0001-22</td>
                             <td>Assistência Social</td>
                             <td>Lúcia Nunes</td>
                             <td><span class="badge-status analise">Em análise</span></td>
                             <td>
                                 <div style="display:flex;gap:0.4rem;">
-                                    <button class="btn-sm primary" onclick="showToast('✅ ONG aprovada com sucesso!')">Aprovar</button>
-                                    <button class="btn-sm outline" style="color:#dc2626;border-color:rgba(220,38,38,0.3);" onclick="showToast('❌ Solicitação recusada.')">Recusar</button>
+                                    <button class="btn-sm primary" onclick="showToast('ONG aprovada com sucesso!')">Aprovar</button>
+                                    <button class="btn-sm outline" style="color:#8a291d;border-color:rgba(242,111,94,0.34);" onclick="showToast('Solicitação recusada.')">Recusar</button>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td><strong>Amigos de Serra</strong></td>
-                            <td style="color:var(--cinza);font-size:0.82rem;">77.111.222/0001-33</td>
+                            <td>77.111.222/0001-33</td>
                             <td>Educação e Cultura</td>
                             <td>Roberto Dias</td>
                             <td><span class="badge-status pendente">Pendente</span></td>
                             <td>
                                 <div style="display:flex;gap:0.4rem;">
-                                    <button class="btn-sm primary" onclick="showToast('✅ ONG aprovada com sucesso!')">Aprovar</button>
-                                    <button class="btn-sm outline" style="color:#dc2626;border-color:rgba(220,38,38,0.3);" onclick="showToast('❌ Solicitação recusada.')">Recusar</button>
+                                    <button class="btn-sm primary" onclick="showToast('ONG aprovada com sucesso!')">Aprovar</button>
+                                    <button class="btn-sm outline" style="color:#8a291d;border-color:rgba(242,111,94,0.34);" onclick="showToast('Solicitação recusada.')">Recusar</button>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td><strong>Verde Vivo Serra</strong></td>
-                            <td style="color:var(--cinza);font-size:0.82rem;">44.888.999/0001-55</td>
+                            <td>44.888.999/0001-55</td>
                             <td>Meio Ambiente</td>
                             <td>Fernanda Souza</td>
                             <td><span class="badge-status inativo">Inativo</span></td>
@@ -706,7 +278,6 @@
             </div>
         </div>
 
-        <!-- ======= AÇÕES E EVENTOS ======= -->
         <div class="panel" id="panel-acoes">
             <div class="section-page-header">
                 <div class="label">Operações</div>
@@ -736,7 +307,6 @@
             </div>
         </div>
 
-        <!-- ======= DEMANDAS ======= -->
         <div class="panel" id="panel-demandas">
             <div class="section-page-header">
                 <div class="label">Cidadãos</div>
@@ -751,28 +321,28 @@
                     </tr></thead>
                     <tbody>
                         <tr>
-                            <td><strong>Animais abandonados</strong><br><span style="font-size:0.78rem;color:var(--cinza)">Grupo de cães em rua sem saída</span></td>
+                            <td><strong>Animais abandonados</strong><br><span>Grupo de cães em rua sem saída</span></td>
                             <td>Nova Almeida</td><td>M. Carvalho</td>
                             <td><span class="badge-status inativo">Urgente</span></td>
                             <td><span class="badge-status pendente">Pendente</span></td>
-                            <td><button class="btn-sm primary" onclick="showToast('✅ Demanda encaminhada à ONG!')">Encaminhar</button></td>
+                            <td><button class="btn-sm primary" onclick="showToast('Demanda encaminhada à ONG!')">Encaminhar</button></td>
                         </tr>
                         <tr>
-                            <td><strong>Maus tratos</strong><br><span style="font-size:0.78rem;color:var(--cinza)">Relato de animal agredido</span></td>
+                            <td><strong>Maus tratos</strong><br><span>Relato de animal agredido</span></td>
                             <td>Laranjeiras</td><td>J. Oliveira</td>
                             <td><span class="badge-status inativo">Urgente</span></td>
                             <td><span class="badge-status pendente">Pendente</span></td>
-                            <td><button class="btn-sm primary" onclick="showToast('✅ Demanda encaminhada à ONG!')">Encaminhar</button></td>
+                            <td><button class="btn-sm primary" onclick="showToast('Demanda encaminhada à ONG!')">Encaminhar</button></td>
                         </tr>
                         <tr>
-                            <td><strong>Solicitação de castração</strong><br><span style="font-size:0.78rem;color:var(--cinza)">Família sem renda</span></td>
+                            <td><strong>Solicitação de castração</strong><br><span>Família sem renda</span></td>
                             <td>Carapina</td><td>P. Santos</td>
                             <td><span class="badge-status analise">Normal</span></td>
                             <td><span class="badge-status pendente">Pendente</span></td>
-                            <td><button class="btn-sm outline" onclick="showToast('✅ Demanda encaminhada!')">Encaminhar</button></td>
+                            <td><button class="btn-sm outline" onclick="showToast('Demanda encaminhada!')">Encaminhar</button></td>
                         </tr>
                         <tr>
-                            <td><strong>Evento de adoção</strong><br><span style="font-size:0.78rem;color:var(--cinza)">Pedido de realização no bairro</span></td>
+                            <td><strong>Evento de adoção</strong><br><span>Pedido de realização no bairro</span></td>
                             <td>Serra Sede</td><td>L. Ferreira</td>
                             <td><span class="badge-status analise">Normal</span></td>
                             <td><span class="badge-status ativo">Respondida</span></td>
@@ -783,7 +353,6 @@
             </div>
         </div>
 
-        <!-- ======= RECURSOS ======= -->
         <div class="panel" id="panel-recursos">
             <div class="section-page-header">
                 <div class="label">Administração</div>
@@ -815,15 +384,14 @@
                 <table>
                     <thead><tr><th>ONG</th><th>Item solicitado</th><th>Valor / Qtd</th><th>Status</th><th>Ação</th></tr></thead>
                     <tbody>
-                        <tr><td><strong>Patas da Serra</strong></td><td>Ração e medicamentos</td><td>R$ 3.200</td><td><span class="badge-status analise">Em análise</span></td><td><button class="btn-sm primary" onclick="showToast('✅ Recurso aprovado!')">Aprovar</button></td></tr>
-                        <tr><td><strong>Lar dos Bichos</strong></td><td>Gaiolas transporte</td><td>12 unid.</td><td><span class="badge-status pendente">Pendente</span></td><td><button class="btn-sm primary" onclick="showToast('✅ Recurso aprovado!')">Aprovar</button></td></tr>
+                        <tr><td><strong>Patas da Serra</strong></td><td>Ração e medicamentos</td><td>R$ 3.200</td><td><span class="badge-status analise">Em análise</span></td><td><button class="btn-sm primary" onclick="showToast('Recurso aprovado!')">Aprovar</button></td></tr>
+                        <tr><td><strong>Lar dos Bichos</strong></td><td>Gaiolas transporte</td><td>12 unid.</td><td><span class="badge-status pendente">Pendente</span></td><td><button class="btn-sm primary" onclick="showToast('Recurso aprovado!')">Aprovar</button></td></tr>
                         <tr><td><strong>Amigos de Serra</strong></td><td>Material didático</td><td>R$ 800</td><td><span class="badge-status ativo">Aprovado</span></td><td><button class="btn-sm outline" onclick="showToast('Detalhes abertos!')">Ver</button></td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <!-- ======= RELATÓRIOS ======= -->
         <div class="panel" id="panel-relatorios">
             <div class="section-page-header">
                 <div class="label">Transparência</div>
@@ -839,7 +407,7 @@
             <div class="table-card">
                 <div class="table-header">
                     <span class="table-title">Relatórios <em>disponíveis</em></span>
-                    <button class="btn-sm primary" onclick="showToast('📊 Relatório exportado em PDF!')">
+                    <button class="btn-sm primary" onclick="showToast('Relatório exportado em PDF!')">
                         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                         Exportar PDF
                     </button>
@@ -855,7 +423,6 @@
             </div>
         </div>
 
-        <!-- ======= COMUNICADOS ======= -->
         <div class="panel" id="panel-comunicados">
             <div class="section-page-header">
                 <div class="label">Comunicação</div>
@@ -872,52 +439,51 @@
                 <div class="table-card" style="padding:1.5rem;">
                     <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;">
                         <div>
-                            <div style="font-size:0.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--verde);margin-bottom:.3rem;">Edital</div>
-                            <h4 style="font-family:'Fraunces',serif;font-size:1.05rem;font-weight:700;color:var(--azul-prof);margin-bottom:.4rem;">Credenciamento de ONGs — 2º Semestre 2025</h4>
-                            <p style="font-size:.85rem;color:var(--cinza);line-height:1.6;">Inscrições abertas para organizações que desejam se tornar parceiras do Programa Arca na Serra. Prazo: 30/06/2025.</p>
+                            <div style="font-size:0.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--arca-mint);margin-bottom:.3rem;">Edital</div>
+                            <h4 style="font-size:1.05rem;font-weight:800;color:var(--arca-prussian);margin-bottom:.4rem;">Credenciamento de ONGs — 2º Semestre 2025</h4>
+                            <p style="font-size:.85rem;color:var(--arca-muted);line-height:1.6;">Inscrições abertas para organizações que desejam se tornar parceiras do Programa Arca na Serra. Prazo: 30/06/2025.</p>
                         </div>
                         <span class="badge-status ativo">Publicado</span>
                     </div>
-                    <div style="font-size:.75rem;color:var(--cinza);margin-top:.8rem;">📅 Publicado em 20/05/2025 · por Gestão Arca</div>
+                    <div style="font-size:.75rem;color:var(--arca-muted);margin-top:.8rem;">Publicado em 20/05/2025 · por Gestão Arca</div>
                 </div>
                 <div class="table-card" style="padding:1.5rem;">
                     <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;">
                         <div>
-                            <div style="font-size:0.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--azul-vib);margin-bottom:.3rem;">Aviso</div>
-                            <h4 style="font-family:'Fraunces',serif;font-size:1.05rem;font-weight:700;color:var(--azul-prof);margin-bottom:.4rem;">Reunião da Rede Arca — Junho/2025</h4>
-                            <p style="font-size:.85rem;color:var(--cinza);line-height:1.6;">Encontro mensal de alinhamento entre Prefeitura e ONGs parceiras. Local: Sede da SEMDS. Data: 12/06/2025 às 14h.</p>
+                            <div style="font-size:0.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--arca-cerulean);margin-bottom:.3rem;">Aviso</div>
+                            <h4 style="font-size:1.05rem;font-weight:800;color:var(--arca-prussian);margin-bottom:.4rem;">Reunião da Rede Arca — Junho/2025</h4>
+                            <p style="font-size:.85rem;color:var(--arca-muted);line-height:1.6;">Encontro mensal de alinhamento entre Prefeitura e ONGs parceiras. Local: Sede da SEMDS. Data: 12/06/2025 às 14h.</p>
                         </div>
                         <span class="badge-status ativo">Publicado</span>
                     </div>
-                    <div style="font-size:.75rem;color:var(--cinza);margin-top:.8rem;">📅 Publicado em 25/05/2025 · por Coord. Arca</div>
+                    <div style="font-size:.75rem;color:var(--arca-muted);margin-top:.8rem;">Publicado em 25/05/2025 · por Coord. Arca</div>
                 </div>
                 <div class="table-card" style="padding:1.5rem;">
                     <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;">
                         <div>
-                            <div style="font-size:0.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--dourado);margin-bottom:.3rem;">Notícia</div>
-                            <h4 style="font-family:'Fraunces',serif;font-size:1.05rem;font-weight:700;color:var(--azul-prof);margin-bottom:.4rem;">Programa Arca bate recorde: 138 ações em 6 meses</h4>
-                            <p style="font-size:.85rem;color:var(--cinza);line-height:1.6;">Balanço do primeiro semestre mostra crescimento expressivo em ações itinerantes, número de voluntários e adoções realizadas.</p>
+                            <div style="font-size:0.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--arca-sun);margin-bottom:.3rem;">Notícia</div>
+                            <h4 style="font-size:1.05rem;font-weight:800;color:var(--arca-prussian);margin-bottom:.4rem;">Programa Arca bate recorde: 138 ações em 6 meses</h4>
+                            <p style="font-size:.85rem;color:var(--arca-muted);line-height:1.6;">Balanço do primeiro semestre mostra crescimento expressivo em ações itinerantes, número de voluntários e adoções realizadas.</p>
                         </div>
                         <span class="badge-status pendente">Rascunho</span>
                     </div>
-                    <div style="font-size:.75rem;color:var(--cinza);margin-top:.8rem;">📅 Criado em 28/05/2025 · não publicado ainda</div>
+                    <div style="font-size:.75rem;color:var(--arca-muted);margin-top:.8rem;">Criado em 28/05/2025 · não publicado ainda</div>
                 </div>
             </div>
         </div>
 
-    </div><!-- /content -->
+    </div>
 </main>
 
-<!-- ===== MODAIS ===== -->
-
-<!-- Modal: Aprovar ONG -->
 <div class="modal-overlay" id="modal-ong">
     <div class="modal">
         <div class="modal-header">
             <h3 class="modal-title">Aprovar <em>ONG</em></h3>
-            <button class="modal-close" onclick="closeModal('modal-ong')">✕</button>
+            <button class="modal-close" onclick="closeModal('modal-ong')">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
         </div>
-        <form onsubmit="handleModal(event,'modal-ong','✅ ONG aprovada e notificada!')">
+        <form onsubmit="handleModal(event,'modal-ong','ONG aprovada e notificada!')">
             <div class="form-group"><label>ONG solicitante</label>
                 <select><option>Instituto Sorriso Verde (em análise)</option><option>Amigos de Serra (pendente)</option></select>
             </div>
@@ -935,14 +501,15 @@
     </div>
 </div>
 
-<!-- Modal: Criar Evento -->
 <div class="modal-overlay" id="modal-evento">
     <div class="modal">
         <div class="modal-header">
             <h3 class="modal-title">Criar <em>Evento</em></h3>
-            <button class="modal-close" onclick="closeModal('modal-evento')">✕</button>
+            <button class="modal-close" onclick="closeModal('modal-evento')">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
         </div>
-        <form onsubmit="handleModal(event,'modal-evento','✅ Evento criado com sucesso!')">
+        <form onsubmit="handleModal(event,'modal-evento','Evento criado com sucesso!')">
             <div class="form-group"><label>Nome do evento / ação</label>
                 <input type="text" placeholder="Ex: Feira de Adoção — Carapina">
             </div>
@@ -967,14 +534,15 @@
     </div>
 </div>
 
-<!-- Modal: Comunicado -->
 <div class="modal-overlay" id="modal-comunicado">
     <div class="modal">
         <div class="modal-header">
             <h3 class="modal-title">Publicar <em>Comunicado</em></h3>
-            <button class="modal-close" onclick="closeModal('modal-comunicado')">✕</button>
+            <button class="modal-close" onclick="closeModal('modal-comunicado')">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
         </div>
-        <form onsubmit="handleModal(event,'modal-comunicado','✅ Comunicado publicado!')">
+        <form onsubmit="handleModal(event,'modal-comunicado','Comunicado publicado!')">
             <div class="form-group"><label>Tipo</label>
                 <select><option>Aviso</option><option>Edital</option><option>Notícia</option><option>Alerta urgente</option></select>
             </div>
@@ -995,66 +563,11 @@
     </div>
 </div>
 
-<!-- TOAST -->
 <div class="toast" id="toast">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
     <span id="toast-msg">Ação realizada!</span>
 </div>
 
-<script>
-    // DATA
-    const now = new Date();
-    document.getElementById('topbar-date').textContent =
-        now.toLocaleDateString('pt-BR', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
-
-    // NAVEGAÇÃO
-    function showPanel(name) {
-        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-        document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
-        const panel = document.getElementById('panel-' + name);
-        const link  = document.querySelector('[data-panel="' + name + '"]');
-        if (panel) panel.classList.add('active');
-        if (link)  link.classList.add('active');
-
-        const titles = {
-            dashboard:  'Visão <em>Geral</em>',
-            ongs:       'Gestão de <em>ONGs</em>',
-            acoes:      'Ações e <em>Eventos</em>',
-            demandas:   'Demandas <em>Recebidas</em>',
-            recursos:   'Gestão de <em>Recursos</em>',
-            relatorios: 'Relatórios e <em>Indicadores</em>',
-            comunicados:'Comunicados <em>Oficiais</em>',
-        };
-        document.getElementById('topbar-title').innerHTML = titles[name] || name;
-    }
-
-    document.querySelectorAll('.sidebar-link[data-panel]').forEach(link => {
-        link.addEventListener('click', e => {
-            e.preventDefault();
-            showPanel(link.dataset.panel);
-        });
-    });
-
-    // MODAIS
-    function openModal(id)  { document.getElementById(id).classList.add('open'); }
-    function closeModal(id) { document.getElementById(id).classList.remove('open'); }
-    document.querySelectorAll('.modal-overlay').forEach(m => {
-        m.addEventListener('click', e => { if (e.target === m) m.classList.remove('open'); });
-    });
-
-    function handleModal(e, modalId, msg) {
-        e.preventDefault();
-        closeModal(modalId);
-        showToast(msg);
-    }
-
-    // TOAST
-    function showToast(msg) {
-        const t = document.getElementById('toast');
-        document.getElementById('toast-msg').textContent = msg;
-        t.classList.add('show');
-        setTimeout(() => t.classList.remove('show'), 3500);
-    }
-</script>
+<script src="prefeitura_dashboard.js"></script>
 </body>
 </html>
