@@ -1,8 +1,8 @@
-/* Atualização de fontes para um estilo mais formal */
+
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
 
 :root {
-    /* Mantenha suas variáveis de cor anteriores aqui */
+    
     --arca-prussian: #0A2647;
     --arca-yale: #144272;
     --arca-dusk: #205295;
@@ -18,7 +18,7 @@
 }
 
 body {
-    /* Fonte Lato: Elegante e profissional para leitura */
+    
     font-family: "Lato", sans-serif;
     background: linear-gradient(135deg, rgba(234, 244, 255, .96), rgba(255, 255, 255, .88) 42%, rgba(234, 244, 255, .7)), repeating-linear-gradient(90deg, rgba(10, 38, 71, .04) 0, rgba(10, 38, 71, .04) 1px, transparent 1px, transparent 78px);
     color: var(--arca-ink);
@@ -26,7 +26,7 @@ body {
     min-height: 100vh;
 }
 
-/* Fonte Libre Baskerville: Serifada clássica para autoridade institucional */
+
 h1, h2, h3, .topbar-title, .metric-num, .table-title, .modal-title, .empty-state h4 {
     font-family: "Libre Baskerville", serif;
     letter-spacing: 0;

@@ -17,7 +17,6 @@ function handleLogin() {
     const senhaInput = document.getElementById('login-senha').value.trim();
     const btn = document.querySelector('#panel-login .btn-submit');
 
-    // Validação de credenciais: prefeitura / pref@456
     if (usuarioInput === 'prefeitura' && senhaInput === 'pref@456') {
         btn.disabled = true;
         btn.textContent = 'Verificando credenciais...';

@@ -17,7 +17,7 @@
     --radius:  8px;
     --shadow:  0 2px 12px rgba(10, 38, 71, 0.08);
 
-    /* aliases HTML existente */
+    
     --azul-prof:  var(--azul);
     --azul-med:   var(--azul-m);
     --azul-vib:   var(--azul-v);
@@ -49,7 +49,7 @@ body {
     line-height: 1.65;
 }
 
-/* Partículas — desativadas para design limpo */
+
 .bg-particles { display: none; }
 
 header {
@@ -145,7 +145,7 @@ nav.scrolled { box-shadow: 0 2px 16px rgba(10,38,71,0.3); }
 }
 .hero-cta:hover { background: #38b396; transform: translateY(-1px); }
 
-/* WAVE */
+
 .wave-divider { line-height: 0; }
 .wave-divider svg { display: block; width: 100%; }
 

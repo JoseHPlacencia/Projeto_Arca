@@ -44,7 +44,6 @@ function handleLogin() {
     const senhaInput = document.getElementById('login-senha').value.trim();
     const btn = document.querySelector('#panel-login .btn-submit');
 
-    // Validação de credenciais: cidaão / 123456
     if ((usuarioInput === 'cidaão' || usuarioInput === 'tutor') && senhaInput === '123456') {
         btn.disabled = true;
         btn.innerHTML = 'Entrando...';
