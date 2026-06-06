@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ARCA | Painel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="./assets/css/variables.css" rel="stylesheet">
+    <link href="./assets/css/arca-app.css" rel="stylesheet">
+</head>
+<body class="app-page" data-page="home">
+    <nav class="navbar navbar-expand-lg arca-nav sticky-top">
+        <div class="container-fluid px-3 px-lg-5">
+            <a class="arca-brand" href="./index.html" aria-label="Programa Arca">
+                <img class="arca-logo-img" src="./assets/img/arca-logo.png" alt="Programa Arca">
+            </a>
+            <span class="arca-brand-label d-none d-sm-inline">Painel ARCA</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Abrir navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <div class="navbar-nav ms-auto gap-2">
+                    <a class="nav-chip active" href="./index.html"><i class="bi bi-grid-1x2"></i> Geral</a>
+                    <a class="nav-chip" href="./cidadao/index.html"><i class="bi bi-person-heart"></i> Tutor</a>
+                    <a class="nav-chip" href="./cidadao/denuncias/index.html"><i class="bi bi-megaphone"></i> Denúncias</a>
+                    <a class="nav-chip" href="./cidadao/marketplace_de_adocao/index.html"><i class="bi bi-search-heart"></i> Candidato</a>
+                    <a class="nav-chip" href="./ong/dashboard.html"><i class="bi bi-building-heart"></i> ONG</a>
+                    <a class="nav-chip" href="./login/index.html"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="page-shell">
+        <section class="dashboard-band mb-4" data-entity="workspace_overview" data-endpoint="/api/overview">
+            <div class="band-head">
+                <h1>Um lugar só para adoção, abrigo e cuidado clínico.</h1>
+                <p class="mt-3 mb-4">O ARCA reúne tutores, candidatos, ONGs e clínicas em uma jornada simples para proteger cães e gatos.</p>
+                <div class="band-actions">
+                    <a class="btn btn-light" href="./cidadao/marketplace_de_adocao/index.html"><i class="bi bi-search-heart"></i> Abrir adoções</a>
+                    <a class="btn btn-light" href="./cidadao/denuncias/index.html"><i class="bi bi-megaphone"></i> Denunciar</a>
+                    <a class="btn btn-outline-light" href="./login/index.html"><i class="bi bi-box-arrow-in-right"></i> Entrar no sistema</a>
+                </div>
+            </div>
+            <div class="metric-strip">
+                <span><strong>8</strong><small>animais em vitrine</small></span>
+                <span><strong>14</strong><small>atendimentos agendados</small></span>
+                <span><strong>5</strong><small>alertas de estoque</small></span>
+                <span><strong>3</strong><small>perfis de acesso</small></span>
+            </div>
+            <div class="module-grid">
+                <a class="module-card" href="./cidadao/index.html" data-record-id="portal-cidadao">
+                    <span class="module-icon"><i class="bi bi-person-heart"></i></span>
+                    <span>
+                        <h2 class="mt-2">Área do tutor.</h2>
+                        <p class="mb-0">Cadastro dos animais, carteira digital, denúncias, serviços e favoritos salvos.</p>
+                    </span>
+                    <span class="module-foot">Abrir área <i class="bi bi-arrow-right"></i></span>
+                </a>
+                <a class="module-card" href="./cidadao/marketplace_de_adocao/index.html" data-record-id="portal-candidato">
+                    <span class="module-icon"><i class="bi bi-search-heart"></i></span>
+                    <span>
+                        <h2 class="mt-2">Busca para adoção.</h2>
+                        <p class="mb-0">Filtros por rotina, porte, idade, localização e cuidados necessários.</p>
+                    </span>
+                    <span class="module-foot">Ver animais <i class="bi bi-arrow-right"></i></span>
+                </a>
+                <a class="module-card" href="./cidadao/denuncias/index.html" data-record-id="portal-denuncias">
+                    <span class="module-icon"><i class="bi bi-megaphone"></i></span>
+                    <span>
+                        <h2 class="mt-2">Denúncias e resgate.</h2>
+                        <p class="mb-0">Registro de maus-tratos, animal perdido, abandono e pedido de apoio.</p>
+                    </span>
+                    <span class="module-foot">Abrir protocolo <i class="bi bi-arrow-right"></i></span>
+                </a>
+                
+                <a class="module-card" href="./ong/dashboard.html" data-record-id="portal-ong">
+                    <span class="module-icon"><i class="bi bi-house-heart-fill"></i></span>
+                    <span>
+                        <h2 class="mt-2">Abrigo, adoções e estoque.</h2>
+                        <p class="mb-0">Fila de animais, pedidos, suprimentos e tarefas.</p>
+                    </span>
+                    <span class="module-foot">Gerir ONG <i class="bi bi-arrow-right"></i></span>
+                </a>
+                <a class="module-card" href="./clinica/agenda.html" data-record-id="portal-clinica">
+                    <span class="module-icon"><i class="bi bi-clipboard2-pulse"></i></span>
+                    <span>
+                        <h2 class="mt-2">Apoio clínico.</h2>
+                        <p class="mb-0">Agenda, prontuário, vacinas, retornos e histórico por animal.</p>
+                    </span>
+                    <span class="module-foot">Ver agenda <i class="bi bi-arrow-right"></i></span>
+                </a>
+            </div>
+        </section>
+
+        <section class="layout-grid">
+            <div class="tool-panel" data-filter-scope>
+                <div class="panel-title">
+                    <div>
+                        <h2>Pendências do dia</h2>
+                    </div>
+                </div>
+                <div class="filter-bar" role="tablist" aria-label="Filtrar tarefas">
+                    <button class="filter-pill" type="button" data-filter-button="todos">Tudo</button>
+                    <button class="filter-pill" type="button" data-filter-button="adocao">Adoção</button>
+                    <button class="filter-pill" type="button" data-filter-button="clinica">Clínica</button>
+                    <button class="filter-pill" type="button" data-filter-button="estoque">Estoque</button>
+                </div>
+                <div class="mini-feed">
+                    <article class="feed-row" data-filter-item data-filter-tags="adocao" data-search-text="Nina entrevista adoção">
+                        <span class="feed-icon"><i class="bi bi-heart"></i></span>
+                        <div>
+                            <strong>Entrevista para Nina</strong>
+                            <span class="d-block">Família quer visita no sábado de manhã.</span>
+                        </div>
+                        <span class="badge-soft mint">novo</span>
+                    </article>
+                    <article class="feed-row" data-filter-item data-filter-tags="clinica" data-search-text="Tom retorno vacina">
+                        <span class="feed-icon"><i class="bi bi-capsule"></i></span>
+                        <div>
+                            <strong>Tom tem retorno de vacina</strong>
+                            <span class="d-block">Confirmar lote e registrar no prontuário.</span>
+                        </div>
+                        <span class="badge-soft sun">hoje</span>
+                    </article>
+                    <article class="feed-row" data-filter-item data-filter-tags="estoque" data-search-text="ração filhote estoque baixo">
+                        <span class="feed-icon"><i class="bi bi-box-seam"></i></span>
+                        <div>
+                            <strong>Ração filhote está baixa</strong>
+                            <span class="d-block">Estoque abaixo do mínimo para 7 dias.</span>
+                        </div>
+                        <span class="badge-soft coral">alerta</span>
+                    </article>
+                    <article class="feed-row" data-filter-item data-filter-tags="adocao clinica" data-search-text="Luma castração pré adoção">
+                        <span class="feed-icon"><i class="bi bi-clipboard2-pulse"></i></span>
+                        <div>
+                            <strong>Luma precisa de pré-castração</strong>
+                            <span class="d-block">Checklist antes de liberar entrevista final.</span>
+                        </div>
+                        <span class="badge-soft">fila</span>
+                    </article>
+                </div>
+            </div>
+
+            <aside class="soft-panel" data-arca-carousel data-autoplay="true">
+                <div class="panel-title">
+                    <div>
+                        <h2>Operação em destaque</h2>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button class="icon-button" type="button" data-carousel-prev aria-label="Slide anterior"><i class="bi bi-arrow-left"></i></button>
+                        <button class="icon-button" type="button" data-carousel-next aria-label="Próximo slide"><i class="bi bi-arrow-right"></i></button>
+                    </div>
+                </div>
+                <div class="carousel-stack">
+                    <article class="story-slide is-active" data-slide>
+                        <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1000&q=80" alt="Cães caminhando juntos">
+                        <div class="story-copy">
+                            <h3>Favoritos ajudam a organizar a visita.</h3>
+                            <p class="mb-0">A lista salva reúne perfis antes da conversa com a ONG.</p>
+                        </div>
+                    </article>
+                    <article class="story-slide" data-slide>
+                        <img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&w=1000&q=80" alt="Atendimento veterinário">
+                        <div class="story-copy">
+                            <h3>Agenda clínica com contexto.</h3>
+                            <p class="mb-0">Cada horário exibe tutor, animal, serviço e status do atendimento.</p>
+                        </div>
+                    </article>
+                    <article class="story-slide" data-slide>
+                        <img src="https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?auto=format&fit=crop&w=1000&q=80" alt="Abrigo com animais">
+                        <div class="story-copy">
+                            <h3>Estoque e tarefas no mesmo fluxo.</h3>
+                            <p class="mb-0">A ONG acompanha pedidos, remédios, ração e perfis publicados em uma rotina só.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="carousel-controls">
+                    <div class="carousel-dots" aria-label="Selecionar slide">
+                        <button type="button" data-carousel-dot aria-label="Slide 1"></button>
+                        <button type="button" data-carousel-dot aria-label="Slide 2"></button>
+                        <button type="button" data-carousel-dot aria-label="Slide 3"></button>
+                    </div>
+                </div>
+            </aside>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/arca-app.js"></script>
+</body>
+</html>

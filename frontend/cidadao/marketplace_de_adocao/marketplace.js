@@ -303,6 +303,103 @@ function qsa(selector, root = document) {
     return Array.from(root.querySelectorAll(selector));
 }
 
+function readMarketSession() {
+    try {
+        return JSON.parse(localStorage.getItem("arcaSession"));
+    } catch {
+        return null;
+    }
+}
+
+function marketRootUrl() {
+    const scriptUrl = document.currentScript?.src || new URL("./marketplace.js", window.location.href).href;
+    return new URL("../../../", scriptUrl);
+}
+
+function marketAppUrl(path) {
+    return new URL(path, marketRootUrl()).href;
+}
+
+function marketSamePath(urlA, urlB) {
+    return new URL(urlA, window.location.href).pathname.replace(/\/$/, "") ===
+        new URL(urlB, window.location.href).pathname.replace(/\/$/, "");
+}
+
+function marketNavItems(profile) {
+    const byProfile = {
+        Tutor: [
+            { label: "Tutor", icon: "bi-person-heart", path: "cidadao/index.html" },
+            { label: "Meus animais", icon: "bi-house-heart", path: "cidadao/meus_animais/index.html" },
+            { label: "Carteira", icon: "bi-file-earmark-medical", path: "cidadao/carteira_digital/index.html" },
+            { label: "Denúncias", icon: "bi-megaphone", path: "cidadao/denuncias/index.html" },
+            { label: "Adoção", icon: "bi-search-heart", path: "cidadao/marketplace_de_adocao/index.html" },
+            { label: "Favoritos", icon: "bi-heart", path: "cidadao/marketplace_de_adocao/favoritos.html", badge: true }
+        ],
+        Candidato: [
+            { label: "Adoção", icon: "bi-search-heart", path: "cidadao/marketplace_de_adocao/index.html" },
+            { label: "Favoritos", icon: "bi-heart", path: "cidadao/marketplace_de_adocao/favoritos.html", badge: true },
+            { label: "Denúncias", icon: "bi-megaphone", path: "cidadao/denuncias/index.html" }
+        ],
+        ONG: [
+            { label: "Painel ONG", icon: "bi-building-heart", path: "ong/dashboard.html" },
+            { label: "Estoque", icon: "bi-box-seam", path: "ong/estoque.html" },
+            { label: "Marketplace", icon: "bi-search-heart", path: "cidadao/marketplace_de_adocao/index.html" },
+            { label: "Agenda", icon: "bi-calendar2-check", path: "clinica/agenda.html" },
+            { label: "Prontuário", icon: "bi-journal-medical", path: "clinica/prontuario.html" }
+        ],
+        Prefeitura: [
+            { label: "Prefeitura", icon: "bi-bank", path: "prefeitura/home_prefeitura.html" },
+            { label: "Denúncias", icon: "bi-megaphone", path: "cidadao/denuncias/index.html" },
+            { label: "ONGs", icon: "bi-building-heart", path: "ong/dashboard.html" },
+            { label: "Relatórios", icon: "bi-clipboard-data", path: "prefeitura/home_prefeitura.html" }
+        ]
+    };
+
+    return byProfile[profile] || [
+        { label: "Adoção", icon: "bi-search-heart", path: "cidadao/marketplace_de_adocao/index.html" },
+        { label: "Favoritos", icon: "bi-heart", path: "cidadao/marketplace_de_adocao/favoritos.html", badge: true },
+        { label: "Tutor", icon: "bi-person", path: "cidadao/index.html" },
+        { label: "Login", icon: "bi-box-arrow-in-right", path: "login/index.html" }
+    ];
+}
+
+function initMarketNavigation() {
+    const session = readMarketSession();
+
+    qsa(".arca-nav .navbar-nav").forEach((nav) => {
+        const items = marketNavItems(session?.profile);
+        nav.innerHTML = items.map((item) => {
+            const href = marketAppUrl(item.path);
+            const active = marketSamePath(window.location.href, href);
+            const badge = item.badge ? '<span class="favorite-count badge rounded-pill">0</span>' : "";
+            return `
+                <li class="nav-item">
+                    <a class="nav-link ${active ? "active" : ""}" href="${href}">
+                        <i class="bi ${item.icon}"></i><span>${item.label}</span>${badge}
+                    </a>
+                </li>
+            `;
+        }).join("");
+
+        if (session?.profile) {
+            nav.insertAdjacentHTML("beforeend", `
+                <li class="nav-item">
+                    <button class="nav-link nav-link-logout" type="button" data-market-logout>
+                        <i class="bi bi-box-arrow-right"></i><span>Sair</span>
+                    </button>
+                </li>
+            `);
+        }
+    });
+
+    qsa("[data-market-logout]").forEach((button) => {
+        button.addEventListener("click", () => {
+            localStorage.removeItem("arcaSession");
+            window.location.href = marketAppUrl("login/index.html");
+        });
+    });
+}
+
 function getFavorites() {
     try {
         return JSON.parse(localStorage.getItem(favoriteKey)) || [];
@@ -790,6 +887,7 @@ function renderDetail() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    initMarketNavigation();
     updateFavoriteCount();
 
     if (page === "marketplace") {

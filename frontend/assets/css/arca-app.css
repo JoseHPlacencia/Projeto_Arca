@@ -100,11 +100,22 @@ a {
     transition: background-color .2s ease, color .2s ease, transform .2s ease;
 }
 
+.nav-chip-logout {
+    background: rgba(234, 244, 255, .1);
+    cursor: pointer;
+}
+
 .nav-chip:hover,
 .nav-chip.active {
     color: var(--arca-prussian) !important;
     background: var(--arca-alice);
     transform: translateY(-1px);
+}
+
+.nav-chip-logout:hover {
+    color: var(--arca-white) !important;
+    background: rgba(239, 91, 91, .22);
+    border-color: rgba(255, 255, 255, .34);
 }
 
 .navbar-toggler {
@@ -274,6 +285,7 @@ a {
 }
 
 .module-card {
+    position: relative;
     min-height: 190px;
     padding: 20px;
     display: flex;
@@ -282,12 +294,30 @@ a {
     color: var(--arca-ink);
     text-decoration: none;
     transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    overflow: hidden;
+}
+
+.module-card::after {
+    content: "";
+    position: absolute;
+    inset: auto -20% -45% auto;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: rgba(70, 194, 166, .16);
+    opacity: 0;
+    transition: opacity .2s ease, transform .2s ease;
 }
 
 .module-card:hover {
     border-color: rgba(44, 116, 179, .48);
     box-shadow: 0 20px 48px rgba(10, 38, 71, .14);
     transform: translateY(-3px);
+}
+
+.module-card:hover::after {
+    opacity: 1;
+    transform: translate(-18px, -18px);
 }
 
 .module-icon {
@@ -324,6 +354,14 @@ a {
     font-weight: 900;
 }
 
+.module-foot i {
+    transition: transform .2s ease;
+}
+
+.module-card:hover .module-foot i {
+    transform: translateX(4px);
+}
+
 .soft-panel,
 .tool-panel {
     padding: clamp(18px, 3vw, 26px);
@@ -356,6 +394,12 @@ a {
     align-items: center;
     border-top: 1px solid var(--arca-line);
     padding: 12px 0;
+    transition: transform .2s ease, background-color .2s ease;
+}
+
+.feed-row:hover {
+    background: rgba(234, 244, 255, .66);
+    transform: translateX(4px);
 }
 
 .feed-row:last-child {

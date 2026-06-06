@@ -242,7 +242,6 @@ main { position: relative; z-index: 1; }
 }
 .opcao.ativa .opcao-icon-wrap { background: rgba(44,116,179,0.1); }
 
-.icone_login { width: 100%; height: 100%; object-fit: cover; display: block; }
 .opcao-icon-fallback {
     color: var(--azul-v);
     display: flex; align-items: center; justify-content: center;

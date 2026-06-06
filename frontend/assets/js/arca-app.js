@@ -142,6 +142,11 @@ const arcaCredentials = {
         password: "ong$-135",
         profile: "ONG",
         target: "../ong/dashboard.html"
+    },
+    prefeitura: {
+        password: "pref@456",
+        profile: "Prefeitura",
+        target: "../prefeitura/home_prefeitura.html"
     }
 };
 
@@ -157,6 +162,10 @@ const accountProfiles = {
     ong: {
         profile: "ONG",
         target: "../ong/dashboard.html"
+    },
+    prefeitura: {
+        profile: "Prefeitura",
+        target: "../prefeitura/home_prefeitura.html"
     }
 };
 
@@ -225,6 +234,13 @@ function initLogin() {
             userInput.focus();
         });
     });
+
+    const requestedProfile = new URLSearchParams(window.location.search).get("perfil");
+    const requestedCredential = arcaCredentials[requestedProfile];
+    if (requestedCredential) {
+        userInput.value = requestedProfile;
+        passwordInput.value = requestedCredential.password;
+    }
 
     form.addEventListener("submit", (event) => {
         event.preventDefault();
@@ -355,6 +371,94 @@ function readSession() {
     } catch {
         return null;
     }
+}
+
+const appScriptUrl = document.currentScript?.src || "";
+const appRootUrl = appScriptUrl ? new URL("../../", appScriptUrl) : new URL("./", window.location.href);
+
+function appUrl(path) {
+    return new URL(path, appRootUrl).href;
+}
+
+function samePath(urlA, urlB) {
+    return new URL(urlA, window.location.href).pathname.replace(/\/$/, "") ===
+        new URL(urlB, window.location.href).pathname.replace(/\/$/, "");
+}
+
+function makeNavItem(item, isListNav) {
+    const href = appUrl(item.path);
+    const active = samePath(window.location.href, href);
+    const icon = `<i class="bi ${item.icon}"></i>`;
+    const label = `<span>${item.label}</span>`;
+    const badge = item.badge ? `<span class="${item.badge.className}">${item.badge.text}</span>` : "";
+
+    if (isListNav) {
+        return `<li class="nav-item"><a class="nav-link ${active ? "active" : ""}" href="${href}">${icon}${label}${badge}</a></li>`;
+    }
+
+    return `<a class="nav-chip ${active ? "active" : ""}" href="${href}">${icon} ${item.label}</a>`;
+}
+
+function makeLogoutItem(isListNav) {
+    const icon = '<i class="bi bi-box-arrow-right"></i>';
+    const label = "<span>Sair</span>";
+    const loginHref = appUrl("login/index.html");
+
+    if (isListNav) {
+        return `<li class="nav-item"><button class="nav-link nav-link-logout" type="button" data-logout="${loginHref}">${icon}${label}</button></li>`;
+    }
+
+    return `<button class="nav-chip nav-chip-logout" type="button" data-logout="${loginHref}">${icon} Sair</button>`;
+}
+
+function profileNavItems(profile) {
+    const tutorItems = [
+        { label: "Tutor", icon: "bi-person-heart", path: "cidadao/index.html" },
+        { label: "Meus animais", icon: "bi-house-heart", path: "cidadao/meus_animais/index.html" },
+        { label: "Carteira", icon: "bi-file-earmark-medical", path: "cidadao/carteira_digital/index.html" },
+        { label: "Denúncias", icon: "bi-megaphone", path: "cidadao/denuncias/index.html" },
+        { label: "Adoção", icon: "bi-search-heart", path: "cidadao/marketplace_de_adocao/index.html" },
+        { label: "Favoritos", icon: "bi-heart", path: "cidadao/marketplace_de_adocao/favoritos.html", badge: { text: "0", className: "favorite-count badge rounded-pill" } }
+    ];
+
+    const navByProfile = {
+        Tutor: tutorItems,
+        Candidato: [
+            { label: "Adoção", icon: "bi-search-heart", path: "cidadao/marketplace_de_adocao/index.html" },
+            { label: "Favoritos", icon: "bi-heart", path: "cidadao/marketplace_de_adocao/favoritos.html", badge: { text: "0", className: "favorite-count badge rounded-pill" } },
+            { label: "Denúncias", icon: "bi-megaphone", path: "cidadao/denuncias/index.html" }
+        ],
+        ONG: [
+            { label: "Painel ONG", icon: "bi-building-heart", path: "ong/dashboard.html" },
+            { label: "Estoque", icon: "bi-box-seam", path: "ong/estoque.html" },
+            { label: "Marketplace", icon: "bi-search-heart", path: "cidadao/marketplace_de_adocao/index.html" },
+            { label: "Agenda", icon: "bi-calendar2-check", path: "clinica/agenda.html" },
+            { label: "Prontuário", icon: "bi-journal-medical", path: "clinica/prontuario.html" }
+        ],
+        Prefeitura: [
+            { label: "Prefeitura", icon: "bi-bank", path: "prefeitura/home_prefeitura.html" },
+            { label: "Denúncias", icon: "bi-megaphone", path: "cidadao/denuncias/index.html" },
+            { label: "ONGs", icon: "bi-building-heart", path: "ong/dashboard.html" },
+            { label: "Relatórios", icon: "bi-clipboard-data", path: "prefeitura/home_prefeitura.html" }
+        ]
+    };
+
+    return navByProfile[profile] || [
+        { label: "Início", icon: "bi-grid-1x2", path: "index.html" },
+        { label: "Adoção", icon: "bi-search-heart", path: "cidadao/marketplace_de_adocao/index.html" },
+        { label: "Denúncias", icon: "bi-megaphone", path: "cidadao/denuncias/index.html" },
+        { label: "Login", icon: "bi-box-arrow-in-right", path: "login/index.html" }
+    ];
+}
+
+function initSmartNavigation() {
+    const session = readSession();
+
+    qsa(".arca-nav .navbar-nav").forEach((nav) => {
+        const isListNav = nav.tagName.toLowerCase() === "ul";
+        const items = profileNavItems(session?.profile);
+        nav.innerHTML = items.map((item) => makeNavItem(item, isListNav)).join("") + (session?.profile ? makeLogoutItem(isListNav) : "");
+    });
 }
 
 function initSessionLabels() {
@@ -1495,6 +1599,7 @@ function initWallet() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    initSmartNavigation();
     initCarousels();
     initTabs();
     initListFilters();

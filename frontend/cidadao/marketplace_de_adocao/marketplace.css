@@ -71,6 +71,13 @@ h3,
     transition: background-color .2s ease, color .2s ease, box-shadow .2s ease;
 }
 
+.arca-nav button.nav-link {
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    font-family: inherit;
+}
+
 .arca-nav .nav-link i {
     font-size: 1rem;
 }
@@ -84,6 +91,11 @@ h3,
     color: var(--arca-prussian) !important;
     background: var(--arca-alice);
     box-shadow: 0 10px 24px rgba(0, 0, 0, .2);
+}
+
+.arca-nav .nav-link-logout:hover {
+    color: var(--arca-white) !important;
+    background: rgba(239, 91, 91, .22);
 }
 
 .arca-nav .navbar-toggler {

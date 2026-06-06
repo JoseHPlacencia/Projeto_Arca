@@ -29,6 +29,10 @@ document.querySelectorAll('.sidebar-link[data-panel]').forEach(link => {
     });
 });
 
+document.getElementById('prefeituraLogout')?.addEventListener('click', () => {
+    localStorage.removeItem('arcaSession');
+});
+
 function openModal(id)  { document.getElementById(id).classList.add('open'); }
 function closeModal(id) { document.getElementById(id).classList.remove('open'); }
 
